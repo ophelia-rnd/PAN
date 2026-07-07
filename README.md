@@ -6,4 +6,4 @@ This work is guided by the following objectives:
 
 * **Research:** Identify background and gaps, Formalize proposed solution
 * **Experiments:** Design experiments, Demonstrate (visually) the proposed method, Evaluation and benchmarking
-* **Development:** Implement the proposed method as an `Sklearn`-compatible estimator
+* **Development:** Implement the proposed method as an `Scikit-learn`-compatible estimator
