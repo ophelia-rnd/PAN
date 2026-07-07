@@ -1,2 +1,1 @@
-# pan
-Parallel Anomalous Nudge (PAN) algorithm
+# Parallel Anomalous Nudge (PAN) algorithm
