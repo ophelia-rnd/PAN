@@ -1,12 +1,10 @@
 # Authors: scikit-learn-contrib developers
 # License: BSD 3 clause
 
-from ._template import TemplateClassifier, TemplateEstimator, TemplateTransformer
+from ._pan import ParallelAnomalousNudge
 from ._version import __version__
 
 __all__ = [
-    "TemplateEstimator",
-    "TemplateClassifier",
-    "TemplateTransformer",
+    "ParallelAnomalousNudge",
     "__version__",
 ]

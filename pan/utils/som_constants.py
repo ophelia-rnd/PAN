@@ -1,0 +1,7 @@
+SOM_TOPOLOGY = "rectangular"
+SOM_USE_EPOCHS = True
+SOM_RANDOM_ORDER = True
+SOM_LEARNING_DECAY_FN = "linear_decay_to_zero"
+SOM_SIGMA_DECAY_FN = "asymptotic_decay"
+SOM_NUM_ITERATION = 20
+SOM_LEARNING_RATE = .5
