@@ -5,19 +5,17 @@
 
 :notoc:
 
-#############################################
-Project template for `scikit-learn` extension
-#############################################
+############################################
+Parallel Anomalous Nudge (PAN) documentation
+############################################
 
 **Date**: |today| **Version**: |version|
 
 **Useful links**:
-`Source Repository <https://github.com/scikit-learn-contrib/project-template>`__ |
-`Issues & Ideas <https://github.com/scikit-learn-contrib/project-templatek/issues>`__ |
+`Source Repository <https://github.com/ophelia-rnd/PAN>`__ |
+`Issues & Ideas <https://github.com/ophelia-rnd/PAN/issues>`__ |
 
-This is the documentation for the `project-template` to help at extending
-`scikit-learn`. It provides some information on how to build your own custom
-`scikit-learn` compatible estimators as well as a template to package them.
+This is the documentation for the :class:`ParallelAnomalousNudge` novelty detector.
 
 
 .. grid:: 1 2 2 2
@@ -30,7 +28,7 @@ This is the documentation for the `project-template` to help at extending
         :class-card: intro-card
         :shadow: md
 
-        Information regarding this template and how to modify it for your own project.
+        Introduction to the estimator.
 
         +++
 
@@ -40,15 +38,14 @@ This is the documentation for the `project-template` to help at extending
             :color: secondary
             :expand:
 
-            To the getting started guideline
+            To the introduction
 
     .. grid-item-card::  User guide
         :img-top: _static/img/index_user_guide.svg
         :class-card: intro-card
         :shadow: md
 
-        An example of narrative documentation. Here, we will explain how to create your
-        own `scikit-learn` estimator.
+        A detailed explanation on how to create and utilize the estimator.
 
         +++
 
@@ -65,8 +62,7 @@ This is the documentation for the `project-template` to help at extending
         :class-card: intro-card
         :shadow: md
 
-        An example of API documentation. This is an example how to use `sphinx` to
-        automatically generate reference API page.
+        API documentation of the estimator and its utilities.
 
         +++
 
@@ -76,15 +72,14 @@ This is the documentation for the `project-template` to help at extending
             :color: secondary
             :expand:
 
-            To the reference guide
+            To the API reference guide
 
     .. grid-item-card::  Examples
         :img-top: _static/img/index_examples.svg
         :class-card: intro-card
         :shadow: md
 
-        A set of examples. It complements the User Guide and it is the right place to
-        show how to use your compatible estimator.
+        Examples of the estimator.
 
         +++
 
