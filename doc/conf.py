@@ -113,4 +113,5 @@ sphinx_gallery_conf = {
     "reference_url": {"pan": None},
 
     'filename_pattern': r'(/plot|/demonstrate)',
+    'ignore_pattern': '/utils'
 }
