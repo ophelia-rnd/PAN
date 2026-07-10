@@ -1,3 +1,4 @@
+import numpy as np
 from minisom import MiniSom
 
 def train_som(X, d1, d2, sigma, topology, learning_rate, num_iteration,

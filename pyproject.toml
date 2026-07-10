@@ -14,7 +14,10 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "scikit-learn>=1.4.2",
-  "minisom<=2.3.5"
+  "minisom<=2.3.5",
+  "pandas",
+  "numpy",
+  "matplotlib"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
