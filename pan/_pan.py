@@ -1,6 +1,6 @@
 import numpy as np
 
-from sklearn.base import BaseEstimator, check_is_fitted
+from sklearn.base import BaseEstimator, check_is_fitted, clone
 from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
 from ._somd import SomDetector
@@ -11,20 +11,9 @@ class ParallelAnomalousNudge(BaseEstimator):
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, d1=4, d2=4, sigma=1.0, topology="rectangular", learning_rate=0.5, num_iteration=20,
-                    decay_function="linear_decay_to_zero", sigma_decay_function="asymptotic_decay",
-                    use_epochs=True, random_order=True, random_seed=None, verbose=False):
+    def __init__(self, scaler=StandardScaler(), random_seed=None, verbose=False):
 
-        self.d1 = d1
-        self.d2 = d2
-        self.sigma = sigma
-        self.topology = topology
-        self.learning_rate = learning_rate
-        self.num_iteration = num_iteration
-        self.decay_function = decay_function
-        self.sigma_decay_function = sigma_decay_function
-        self.use_epochs = use_epochs
-        self.random_order = random_order
+        self.scaler = scaler
         self.random_seed = random_seed
         self.verbose = verbose
 
@@ -41,7 +30,7 @@ class ParallelAnomalousNudge(BaseEstimator):
         self.X_partitions_ = X_partitions
 
         # Fit partition-wise scalers, transform X
-        scalers = {c: StandardScaler().fit(X_partitions[c]) for c in self.classes_}
+        scalers = {c: clone(self.scaler).fit(X_partitions[c]) for c in self.classes_}
         X_partitions_scaled = {c: scalers[c].transform(X_partitions[c]) for c in self.classes_}
         self.scalers_ = scalers
         self.X_partitions_scaled_ = X_partitions_scaled
