@@ -1,4 +1,5 @@
 import numpy as np
+import bisect
 
 from sklearn.base import BaseEstimator, check_is_fitted, clone
 from sklearn.preprocessing import StandardScaler
@@ -11,9 +12,12 @@ class ParallelAnomalousNudge(BaseEstimator):
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, scaler=StandardScaler(), random_seed=None, verbose=False):
+    def __init__(self, scaler=StandardScaler(), normal_label=0, abnormal_label=1, omega=2.0, random_seed=None, verbose=False):
 
         self.scaler = scaler
+        self.normal_label = normal_label
+        self.abnormal_label = abnormal_label
+        self.omega = omega
         self.random_seed = random_seed
         self.verbose = verbose
 
@@ -24,6 +28,8 @@ class ParallelAnomalousNudge(BaseEstimator):
         self.classes_ = unique_labels(y)
         self.X_ = X
         self.y_ = y
+        self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label)
+        self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label)
 
         # Partition X by y
         X_partitions = {c: X[y == c] for c in self.classes_}
@@ -44,11 +50,11 @@ class ParallelAnomalousNudge(BaseEstimator):
             estimator.fit(XP_scaled)
             self.estimators_.append(estimator)
 
-        # Calculate normal train data scores and initialize offset
-        X_combined_scores = self.combined_score_samples(X_partitions[0])
-        self.offset_ = min(X_combined_scores)
+        X_abnormal = X_partitions[self.abnormal_label]
+        self.X_abnormal_sample_n_ = len(X_abnormal)
+        self.X_abnormal_deviations_ranked_ = sorted(abs(self.score_samples(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
 
-
+        # FIXME: self.offset_
         # TODO: assert continuity
 
         return self
@@ -58,7 +64,6 @@ class ParallelAnomalousNudge(BaseEstimator):
         Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the trained SOM representation, for all representation, in a tuple format.
         The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
         """
-
         check_is_fitted(self)
         X = self._validate_data(X)
 
@@ -69,35 +74,39 @@ class ParallelAnomalousNudge(BaseEstimator):
         X_scores = np.array([est.score_samples(scaled_data) for est, scaled_data in zip(self.estimators_, X_scaled.T)]).T
 
         return X_scores
-
-    def combined_score_samples(self, X):
+    
+    def score_samples_without_nudge(self, X):
         """
-        Combine constituent score components of X resulted from `.score_samples(X)`.
+        Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the Normal SOM representation.
+        The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
+        Ignores learned anomalous evidence.
         """
-
         check_is_fitted(self)
         X = self._validate_data(X)
 
-        scores = self.score_samples(X)
+        X_score = self.score_samples(X)
+        return X_score[:, self.normal_label_idx_].ravel()
 
-        anomaly_weight = 1.0
-        normalcy_scores = scores[:, 0]
-        anomaloussness_scores = scores[:, 1]
-
-        normalcy_scores *= -1
-        anomaloussness_scores *= -1
-
-        combines_scores = np.maximum(1, (anomaly_weight * normalcy_scores) / (anomaloussness_scores + 1e-12)) * normalcy_scores
-        combines_scores *= -1
-
-        return combines_scores
-
-    def decision_function(self, X):
+    def score_samples_nudged(self, X):
+        """
+        Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the Normal SOM representation,
+        boosted by a nudge factor based on deviation from the Abnormal representation.
+        The nudge is determined by how samples rank in historical abnormal samples' deviation from the abnormal representation.
+        The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
+        """
         check_is_fitted(self)
-        X = self._validate_data(X, reset=False)
+        X = self._validate_data(X)
 
-        return (self.combined_score_samples(X) - self.offset_)
+        X_score = self.score_samples(X)
+        X_abnormal_deviation = abs(X_score[:, self.abnormal_label_idx_].ravel())
 
-    def predict(self, X):
-        return (self.decision_function(X) < 0).astype(int)
+        X_rank = [(bisect.bisect_left(self.X_abnormal_deviations_ranked_, x_abn_dev) + 1) for x_abn_dev in X_abnormal_deviation]
+        X_nudged_score = [self.__internal_scoring_formula(x_dev, x_rank) for (x_dev, x_rank) in zip(X_score[:, self.normal_label_idx_].ravel(), X_rank)]
+        return np.array(X_nudged_score)
 
+    def __sample_nudge_amount(self, x_rank):
+        multiplier = ((self.X_abnormal_sample_n_ + 1) - x_rank) / self.X_abnormal_sample_n_
+        return (multiplier * (self.omega - 1)) + 1
+
+    def __internal_scoring_formula(self, x_normalcy_deviation, x_anomalous_rank):
+        return x_normalcy_deviation * self.__sample_nudge_amount(x_anomalous_rank)
