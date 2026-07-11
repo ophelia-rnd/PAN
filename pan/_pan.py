@@ -1,5 +1,4 @@
 import numpy as np
-import bisect
 
 from sklearn.base import BaseEstimator, check_is_fitted, clone
 from sklearn.preprocessing import StandardScaler
@@ -98,15 +97,17 @@ class ParallelAnomalousNudge(BaseEstimator):
         X = self._validate_data(X)
 
         X_score = self.score_samples(X)
-        X_abnormal_deviation = abs(X_score[:, self.abnormal_label_idx_].ravel())
+        X_normal_score = X_score[:, self.normal_label_idx_].ravel()
+        X_abnormal_score = X_score[:, self.abnormal_label_idx_].ravel()
 
-        X_rank = [(bisect.bisect_left(self.X_abnormal_deviations_ranked_, x_abn_dev) + 1) for x_abn_dev in X_abnormal_deviation]
-        X_nudged_score = [self.__internal_scoring_formula(x_dev, x_rank) for (x_dev, x_rank) in zip(X_score[:, self.normal_label_idx_].ravel(), X_rank)]
+        X_anomalous_rank = np.searchsorted(self.X_abnormal_deviations_ranked_, abs(X_abnormal_score)) + 1
+        X_nudged_score = self.__internal_scoring_formula(X_normal_score, X_anomalous_rank)
+
         return np.array(X_nudged_score)
 
-    def __sample_nudge_amount(self, x_rank):
-        multiplier = ((self.X_abnormal_sample_n_ + 1) - x_rank) / self.X_abnormal_sample_n_
+    def __sample_nudge_amount(self, X_rank):
+        multiplier = ((self.X_abnormal_sample_n_ + 1) - X_rank) / self.X_abnormal_sample_n_
         return (multiplier * (self.omega - 1)) + 1
 
-    def __internal_scoring_formula(self, x_normalcy_deviation, x_anomalous_rank):
-        return x_normalcy_deviation * self.__sample_nudge_amount(x_anomalous_rank)
+    def __internal_scoring_formula(self, X_normal_score, X_anomalous_rank):
+        return X_normal_score * self.__sample_nudge_amount(X_anomalous_rank)
