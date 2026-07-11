@@ -130,13 +130,9 @@ class ParallelAnomalousNudge(BaseEstimator):
         return X_dual_scores
 
     def _score_component_normal(self, X):
-        check_is_fitted(self)
-        X = self._validate_data(X)
         return self._score_components(X)[:, self.normal_label_idx_].ravel()
     
     def _score_component_abnormal(self, X):
-        check_is_fitted(self)
-        X = self._validate_data(X)
         return self._score_components(X)[:, self.abnormal_label_idx_].ravel()
 
     def __sample_nudge_amount(self, X_rank):
