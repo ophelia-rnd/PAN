@@ -51,7 +51,7 @@ Demonstration of the nudge effect
 
     # Fit PAN model on train data
     from sklearn.preprocessing import StandardScaler
-    estimator = ParallelAnomalousNudge(scaler=StandardScaler(), random_seed=42, verbose=False)
+    estimator = ParallelAnomalousNudge(scaler=StandardScaler(), nu=.05, omega=2.0, random_seed=42, verbose=False)
     estimator.fit(X_train, y_train)
 
 
@@ -466,12 +466,12 @@ Demonstration of the nudge effect
       /* fitted */
       background-color: var(--sklearn-color-fitted-level-3);
     }
-    </style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(random_seed=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(random_seed=42)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
+    </style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
     </div>
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-54
+.. GENERATED FROM PYTHON SOURCE LINES 27-55
 
 .. code-block:: Python
 
@@ -505,6 +505,7 @@ Demonstration of the nudge effect
 
 
 
+
 .. image-sg:: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_001.png
    :alt: Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$), Nudged anomaly score ($0 \simeq \mathrm{inlier}$)
    :srcset: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_001.png
@@ -514,10 +515,58 @@ Demonstration of the nudge effect
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 56-58
+
+Next, call `decision_function`, which turns raw scores into a shifted score, where 0 acts as the decision boundary.
+Also, visualize predictions via the `predict` method.
+
+.. GENERATED FROM PYTHON SOURCE LINES 58-85
+
+.. code-block:: Python
+
+
+    fig, axes = plt.subplots(2, 1, figsize=(8, 7), sharex=True, sharey=True)
+    axes = axes.flatten()
+
+    shifted_scores = estimator.decision_function(X_test)
+
+    ax = axes[0]
+    ax.set_title(rf"Shifted nudged anomaly score ($0 < \mathrm{{outlier}}$, $\mathrm{{nu}}={estimator.nu}$, $\mathrm{{offset}}={round(estimator.offset_, 3)}$)", loc="left")
+    ax.violinplot(shifted_scores, positions=[1], vert=False)
+    ax.scatter(shifted_scores[y_test == 0], y=np.ones_like(shifted_scores[y_test == 0]), marker="o", edgecolor="k", color="none", s=400, alpha=.75, label="True normal", zorder=2)
+    ax.scatter(shifted_scores[y_test == 1], y=np.ones_like(shifted_scores[y_test == 1]), marker="x", color="crimson", s=200, alpha=.75, label="True anomaly", zorder=3)
+    ax.axvline(x=0, color="k", linestyle="dashed")
+    ax.set_yticks([])
+
+    predictions = estimator.predict(X_test)
+
+    ax = axes[1]
+    ax.set_title(rf"Predictions", loc="left")
+    ax.violinplot(shifted_scores, positions=[1], vert=False)
+    ax.scatter(shifted_scores[predictions == 1], y=np.ones_like(shifted_scores[predictions == 1]), marker="^", edgecolor="k", color="none", s=200, alpha=.75, label="Predicted normal", zorder=2)
+    ax.scatter(shifted_scores[predictions == -1], y=np.ones_like(shifted_scores[predictions == -1]), marker="^", edgecolor="crimson", color="none", s=200, alpha=.75, label="Predicted anomaly", zorder=3)
+    ax.axvline(x=0, color="k", linestyle="dashed")
+    ax.set_yticks([])
+
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+
+
+.. image-sg:: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_002.png
+   :alt: Shifted nudged anomaly score ($0 < \mathrm{outlier}$, $\mathrm{nu}=0.05$, $\mathrm{offset}=-0.963$), Predictions
+   :srcset: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.229 seconds)
+   **Total running time of the script:** (0 minutes 0.386 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_score_samples_nudged.py:
