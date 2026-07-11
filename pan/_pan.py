@@ -102,7 +102,19 @@ class ParallelAnomalousNudge(BaseEstimator):
         return self.score_samples(X) - self.offset_
     
     def predict(self, X):
-        return self.decision_function(X) >= 0
+        """
+        Perform classification on samples in X.
+        A label of +1 or -1 is returned for inliers and outliers, respectively.
+        """
+
+        scores = self.decision_function(X)
+        cnd_inlier = scores >= 0
+
+        y_pred = np.zeros_like(scores, dtype=np.intp)
+        y_pred[cnd_inlier] = 1
+        y_pred[~cnd_inlier] = -1
+
+        return y_pred
 
     def _score_components(self, X):
         """
