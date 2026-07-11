@@ -29,7 +29,7 @@ fig, axes = plt.subplots(2, 1, figsize=(8, 7), sharex=True, sharey=True)
 axes = axes.flatten()
 
 # Baseline: Obtain nudge-free scores (anomaly scores with respect to the learned normal representation)
-scores = estimator.score_samples_without_nudge(X_test)
+scores = estimator._score_component_normal(X_test)
 
 ax = axes[0]
 ax.set_title(r"Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$)", loc="left")
@@ -39,7 +39,7 @@ ax.scatter(scores[y_test == 1], y=np.ones_like(scores[y_test == 1]), marker="x",
 ax.set_yticks([])
 
 # Nudged scores
-scores = estimator.score_samples_nudged(X_test)
+scores = estimator.score_samples(X_test)
 
 ax = axes[1]
 ax.set_title(r"Nudged anomaly score ($0 \simeq \mathrm{inlier}$)", loc="left")

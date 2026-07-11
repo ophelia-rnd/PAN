@@ -101,6 +101,9 @@ The following is a simple overview of how the :class:`pan.pan.ParallelAnomalousN
     Quantization error (rounded):   0.213
     Topographic error (rounded):    0.0
 
+    Offset is calculated as:         -0.15632357454787646 
+
+
 
 .. raw:: html
 
@@ -517,7 +520,7 @@ The following is a simple overview of how the :class:`pan.pan.ParallelAnomalousN
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.778 seconds)
+   **Total running time of the script:** (0 minutes 0.798 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_fit.py:

@@ -26,8 +26,7 @@ estimator.fit(X_train, y_train)
 # %%
 
 # Obtain nudge-free scores (anomaly scores with respect to the learned abnormal representation)
-scores = estimator.score_samples(X_test)
-scores = scores[:, estimator.abnormal_label_idx_].ravel()
+scores = estimator._score_component_abnormal(X_test)
 
 plt.figure(figsize=(8, 5))
 plt.title(r"Anomaly score based on Abnormal representation only ($0 \simeq \mathrm{anomaly}$)", loc="left")

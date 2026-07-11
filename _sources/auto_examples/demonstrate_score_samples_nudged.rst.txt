@@ -480,7 +480,7 @@ Demonstration of the nudge effect
     axes = axes.flatten()
 
     # Baseline: Obtain nudge-free scores (anomaly scores with respect to the learned normal representation)
-    scores = estimator.score_samples_without_nudge(X_test)
+    scores = estimator._score_component_normal(X_test)
 
     ax = axes[0]
     ax.set_title(r"Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$)", loc="left")
@@ -490,7 +490,7 @@ Demonstration of the nudge effect
     ax.set_yticks([])
 
     # Nudged scores
-    scores = estimator.score_samples_nudged(X_test)
+    scores = estimator.score_samples(X_test)
 
     ax = axes[1]
     ax.set_title(r"Nudged anomaly score ($0 \simeq \mathrm{inlier}$)", loc="left")
@@ -517,7 +517,7 @@ Demonstration of the nudge effect
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.230 seconds)
+   **Total running time of the script:** (0 minutes 0.229 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_score_samples_nudged.py:
