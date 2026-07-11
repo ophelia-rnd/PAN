@@ -517,7 +517,7 @@ The following is a simple overview of how the :class:`pan.pan.ParallelAnomalousN
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.754 seconds)
+   **Total running time of the script:** (0 minutes 0.778 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_fit.py:
