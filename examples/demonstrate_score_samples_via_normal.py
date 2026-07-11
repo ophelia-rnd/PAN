@@ -26,7 +26,7 @@ estimator.fit(X_train, y_train)
 # %%
 
 # Obtain nudge-free scores (anomaly scores with respect to the learned normal representation)
-scores = estimator.score_samples_without_nudge(X_test)
+scores = estimator._score_component_normal(X_test)
 
 plt.figure(figsize=(8, 5))
 plt.title(r"Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$)", loc="left")
