@@ -76,3 +76,6 @@ target/
 
 # auto-generated files
 pan/_version.py
+
+# temporary
+_local_sandbox
