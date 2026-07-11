@@ -3,19 +3,25 @@ import numpy as np
 from sklearn.base import BaseEstimator, check_is_fitted, clone
 from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
-from ._somd import SomDetector
+from scipy.optimize import minimize
+
 from .utils.som_hyparams import get_som_hyparams
+from ._somd import SomDetector
+
+# TODO: assert continuity
+# TODO: som params
 
 class ParallelAnomalousNudge(BaseEstimator):
     """
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, scaler=StandardScaler(), normal_label=0, abnormal_label=1, omega=2.0, random_seed=None, verbose=False):
+    def __init__(self, scaler=StandardScaler(), normal_label=0, abnormal_label=1, nu=0.5, omega=2.0, random_seed=None, verbose=False):
 
         self.scaler = scaler
         self.normal_label = normal_label
         self.abnormal_label = abnormal_label
+        self.nu = nu
         self.omega = omega
         self.random_seed = random_seed
         self.verbose = verbose
@@ -49,44 +55,31 @@ class ParallelAnomalousNudge(BaseEstimator):
             estimator.fit(XP_scaled)
             self.estimators_.append(estimator)
 
+        # Create ranking of abnormal training data
+
         X_abnormal = X_partitions[self.abnormal_label]
         self.X_abnormal_sample_n_ = len(X_abnormal)
-        self.X_abnormal_deviations_ranked_ = sorted(abs(self.score_samples(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
+        self.X_abnormal_deviations_ranked_ = sorted(abs(self._score_components(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
 
-        # FIXME: self.offset_
-        # TODO: assert continuity
+
+        # ::: End of fitting :::
+
+
+        # Obtain offset
+
+        X_normal = X_partitions[self.normal_label]
+        X_normal_scores = self.score_samples(X_normal)
+
+        rho_initial = np.median(X_normal_scores)
+        optim_res = minimize(self.__nu_loss, x0=[rho_initial], args=(X_normal_scores, self.nu), bounds=[(None, 0)])
+        self.offset_ = optim_res.x[0]
+
+        if self.verbose:
+            print(f"\nOffset is calculated as:\t", self.offset_, "\n")
 
         return self
-
-    def score_samples(self, X):
-        """
-        Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the trained SOM representation, for all representation, in a tuple format.
-        The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
-        """
-        check_is_fitted(self)
-        X = self._validate_data(X)
-
-        # Scale X
-        X_scaled = np.array([self.scalers_[c].transform(X) for c in self.classes_]).T
-
-        # Obtain representation-wise scores
-        X_scores = np.array([est.score_samples(scaled_data) for est, scaled_data in zip(self.estimators_, X_scaled.T)]).T
-
-        return X_scores
     
-    def score_samples_without_nudge(self, X):
-        """
-        Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the Normal SOM representation.
-        The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
-        Ignores learned anomalous evidence.
-        """
-        check_is_fitted(self)
-        X = self._validate_data(X)
-
-        X_score = self.score_samples(X)
-        return X_score[:, self.normal_label_idx_].ravel()
-
-    def score_samples_nudged(self, X):
+    def score_samples(self, X):
         """
         Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the Normal SOM representation,
         boosted by a nudge factor based on deviation from the Abnormal representation.
@@ -96,18 +89,52 @@ class ParallelAnomalousNudge(BaseEstimator):
         check_is_fitted(self)
         X = self._validate_data(X)
 
-        X_score = self.score_samples(X)
+        X_score = self._score_components(X)
         X_normal_score = X_score[:, self.normal_label_idx_].ravel()
         X_abnormal_score = X_score[:, self.abnormal_label_idx_].ravel()
 
         X_anomalous_rank = np.searchsorted(self.X_abnormal_deviations_ranked_, abs(X_abnormal_score)) + 1
-        X_nudged_score = self.__internal_scoring_formula(X_normal_score, X_anomalous_rank)
+        X_nudged_score = self.__internal_nudged_score_formula(X_normal_score, X_anomalous_rank)
 
         return np.array(X_nudged_score)
+    
+    def decision_function(self, X):
+        return self.score_samples(X) - self.offset_
+    
+    def predict(self, X):
+        return self.decision_function(X) >= 0
+
+    def _score_components(self, X):
+        """
+        Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the trained SOM representation, for all representation, in a tuple format.
+        The bigger is better, i.e. zero being the maximum value a sample can score, the closer the score is to zero, the more it is considered as an inlier.
+        """
+        check_is_fitted(self)
+        X = self._validate_data(X)
+
+        X_dual_scaled = np.array([self.scalers_[c].transform(X) for c in self.classes_]).T
+        X_dual_scores = np.array([est.score_samples(scaled_data) for est, scaled_data in zip(self.estimators_, X_dual_scaled.T)]).T
+
+        return X_dual_scores
+
+    def _score_component_normal(self, X):
+        check_is_fitted(self)
+        X = self._validate_data(X)
+        return self._score_components(X)[:, self.normal_label_idx_].ravel()
+    
+    def _score_component_abnormal(self, X):
+        check_is_fitted(self)
+        X = self._validate_data(X)
+        return self._score_components(X)[:, self.abnormal_label_idx_].ravel()
 
     def __sample_nudge_amount(self, X_rank):
         multiplier = ((self.X_abnormal_sample_n_ + 1) - X_rank) / self.X_abnormal_sample_n_
         return (multiplier * (self.omega - 1)) + 1
 
-    def __internal_scoring_formula(self, X_normal_score, X_anomalous_rank):
+    def __internal_nudged_score_formula(self, X_normal_score, X_anomalous_rank):
         return X_normal_score * self.__sample_nudge_amount(X_anomalous_rank)
+
+    def __nu_loss(self, rho, scores, nu):
+        hinge_loss = np.maximum(0, rho - scores)
+        boundary_penalty = nu * rho
+        return np.mean(hinge_loss) - boundary_penalty
