@@ -1,13 +1,4 @@
 import numpy as np
-from .som_constants import (
-    SOM_TOPOLOGY,
-    SOM_USE_EPOCHS,
-    SOM_RANDOM_ORDER,
-    SOM_LEARNING_DECAY_FN,
-    SOM_SIGMA_DECAY_FN,
-    SOM_NUM_ITERATION,
-    SOM_LEARNING_RATE
-)
 
 def calc_recommended_total_node_count(X):
 	N = len(X)
@@ -36,7 +27,7 @@ def calc_initial_sigma(d1, d2, factor=3.0):
     if L <= 1: return 1.0
     return np.round(L / factor, 2)
 
-def get_som_hyparams(X, verbose=True):
+def calc_som_hyparams(X, verbose=True):
     total_node_count = calc_recommended_total_node_count(X)
     height, width = calc_recommended_lattice_sides(X)
     initial_sigma = calc_initial_sigma(height, width)
@@ -45,10 +36,6 @@ def get_som_hyparams(X, verbose=True):
         "d1": height,
         "d2": width,
         "sigma": initial_sigma,
-        "learning_rate": SOM_LEARNING_RATE,
-        "num_iteration": SOM_NUM_ITERATION,
-        "decay_function": SOM_LEARNING_DECAY_FN,
-        "sigma_decay_function": SOM_SIGMA_DECAY_FN,
     }
 
     if verbose:

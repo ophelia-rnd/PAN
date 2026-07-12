@@ -2,16 +2,17 @@ import numpy as np
 
 from sklearn.base import BaseEstimator, check_is_fitted, clone
 from minisom import MiniSom
+from .utils.som_hyparams import calc_som_hyparams
 
 class SomDetector(BaseEstimator):
     """
     Self-Organizing Map (SOM)-based estimator for measuring deviation from a single class representation.
     """
 
-    def __init__(self, som:MiniSom=None, d1=4, d2=4, sigma=1.0, topology="rectangular", learning_rate=0.5, num_iteration=20,
-                    decay_function="linear_decay_to_zero", sigma_decay_function="asymptotic_decay",
+    def __init__(self, d1=None, d2=None, sigma=None, topology="rectangular", learning_rate=0.5, num_iteration=20,
+                    decay_function="asymptotic_decay", sigma_decay_function="asymptotic_decay",
+                    neighborhood_function='gaussian', activation_distance='euclidean',
                     use_epochs=True, random_order=True, random_seed=None, verbose=False):
-        self.som = som
         self.d1 = d1
         self.d2 = d2
         self.sigma = sigma
@@ -20,6 +21,8 @@ class SomDetector(BaseEstimator):
         self.num_iteration = num_iteration
         self.decay_function = decay_function
         self.sigma_decay_function = sigma_decay_function
+        self.neighborhood_function = neighborhood_function
+        self.activation_distance = activation_distance
         self.use_epochs = use_epochs
         self.random_order = random_order
         self.random_seed = random_seed
@@ -29,40 +32,41 @@ class SomDetector(BaseEstimator):
         X = self._validate_data(X)
         self.X_ = X
 
-        if self.som is not None:
-            self.som_ = clone(self.som)
+        if not self.__main_params_set():
+            hyparams = self.__derive_main_params(X)
 
-        else:
-            som_hyperparams = {
-                "x": self.d1,
-                "y": self.d2,
-                "input_len": X.shape[1],
-                "sigma": self.sigma,
-                "topology": self.topology,
-                "learning_rate": self.learning_rate,
-                "decay_function": self.decay_function,
-                "sigma_decay_function": self.sigma_decay_function,
-                "random_seed": self.random_seed
-            }
+        som_hyperparams = {
+            "input_len": X.shape[1],
+            "x": self.d1 if self.d1 is not None else hyparams.get("d1"),
+            "y": self.d2 if self.d2 is not None else hyparams.get("d2"),
+            "sigma": self.sigma if self.sigma is not None else hyparams.get("sigma"),
+            "topology": self.topology,
+            "learning_rate": self.learning_rate,
+            "decay_function": self.decay_function,
+            "sigma_decay_function": self.sigma_decay_function,
+            "neighborhood_function": self.neighborhood_function,
+            "activation_distance": self.activation_distance,
+            "random_seed": self.random_seed
+        }
 
-            som_fit_hyperparams ={
-                "num_iteration": self.num_iteration,
-                "random_order": self.random_order,
-                "use_epochs": self.use_epochs,
-                "verbose": self.verbose
-            }
+        som_fit_hyperparams = {
+            "num_iteration": self.num_iteration,
+            "random_order": self.random_order,
+            "use_epochs": self.use_epochs,
+            "verbose": self.verbose
+        }
 
-            som = self.__train_som(X, som_hyperparams, som_fit_hyperparams)
+        som = self.__train_som(X, som_hyperparams, som_fit_hyperparams)
 
-            if self.verbose:
-                QE, TE, QE_ROUNDED, TE_ROUNDED = self.__som_quality(som, X)
-                print("\nQuality of SOM:")
-                print(f"Quantization error:\t{QE}")
-                print(f"Topographic error:\t{TE}")
-                print(f"Quantization error (rounded):\t{QE_ROUNDED}")
-                print(f"Topographic error (rounded):\t{TE_ROUNDED}")
+        if self.verbose:
+            QE, TE, QE_ROUNDED, TE_ROUNDED = self.__som_quality(som, X)
+            print("\nQuality of SOM:")
+            print(f"Quantization error:\t{QE}")
+            print(f"Topographic error:\t{TE}")
+            print(f"Quantization error (rounded):\t{QE_ROUNDED}")
+            print(f"Topographic error (rounded):\t{TE_ROUNDED}")
 
-            self.som_ = som
+        self.som_ = som
 
         return self
 
@@ -76,6 +80,13 @@ class SomDetector(BaseEstimator):
 
         quantization_errors = np.linalg.norm(X - self.som_.quantization(X), axis=1)
         return (quantization_errors * -1)
+    
+    def __main_params_set(self):
+        return not (self.d1 is None or self.d2 is None or self.sigma is None)
+
+    def __derive_main_params(self, X):
+        hyparams = calc_som_hyparams(X, verbose=self.verbose)
+        return hyparams
 
     def __train_som(self, X, hyperparams, fit_hyperparams):
         som = MiniSom(**hyperparams)

@@ -5,59 +5,62 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
 from scipy.optimize import minimize
 
-from .utils.som_hyparams import get_som_hyparams
 from ._somd import SomDetector
 
 # TODO: assert continuity
-# TODO: som params
 
 class ParallelAnomalousNudge(BaseEstimator):
     """
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, scaler=StandardScaler(), normal_label=0, abnormal_label=1, nu=0.5, omega=2.0, random_seed=None, verbose=False):
+    def __init__(self, estimators=None, scaler=StandardScaler(), nu=0.5, omega=2.0, random_seed=None, verbose=False):
 
+        self.estimators = estimators
         self.scaler = scaler
-        self.normal_label = normal_label
-        self.abnormal_label = abnormal_label
         self.nu = nu
         self.omega = omega
         self.random_seed = random_seed
         self.verbose = verbose
 
     def fit(self, X, y, continuity_violation_limit=0.1):
-
         X, y = self._validate_data(X, y)
 
-        self.classes_ = unique_labels(y)
         self.X_ = X
         self.y_ = y
-        self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label)
-        self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label)
+        self.classes_ = unique_labels(y).astype(int)
 
-        # Partition X by y
-        X_partitions = {c: X[y == c] for c in self.classes_}
-        self.X_partitions_ = X_partitions
+        if self.estimators is not None:
+            assert (len(self.classes_) == 2) and (len(self.estimators) == 2), "PAN currently supports two classes."
+        
+        self.normal_label_ = 0
+        self.abnormal_label_ = 1
+        self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label_)
+        self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label_)
 
-        # Fit partition-wise scalers, transform X
-        scalers = {c: clone(self.scaler).fit(X_partitions[c]) for c in self.classes_}
-        X_partitions_scaled = {c: scalers[c].transform(X_partitions[c]) for c in self.classes_}
-        self.scalers_ = scalers
-        self.X_partitions_scaled_ = X_partitions_scaled
+        self.scalers_ = {}
+        self.estimators_ = {}
+        self.X_partitions_ = {}
+        self.X_partitions_scaled_ = {}
 
-        # Learn partition-wise SOM representations
-        self.estimators_: list[SomDetector] = []
+        # Fit partition-wise scalers, transform X, learn SOM-based detectors
         for c in self.classes_:
-            XP_scaled = X_partitions_scaled[c]
-            hyparams = get_som_hyparams(XP_scaled, verbose=self.verbose)
-            estimator = SomDetector(**hyparams, random_seed=self.random_seed, verbose=self.verbose)
+            XP = X[y == c]
+            scaler = clone(self.scaler).fit(XP)
+            XP_scaled = scaler.transform(XP)
+
+            # Use the parameters of the given estimator blueprint or let it derive internally
+            estimator = self.estimators[c] if self.estimators is not None else SomDetector(random_seed=self.random_seed, verbose=self.verbose)
             estimator.fit(XP_scaled)
-            self.estimators_.append(estimator)
+
+            self.X_partitions_[c] = XP
+            self.X_partitions_scaled_[c] = XP_scaled
+            self.scalers_[c] = scaler
+            self.estimators_[c] = estimator
 
         # Create ranking of abnormal training data
 
-        X_abnormal = X_partitions[self.abnormal_label]
+        X_abnormal = self.X_partitions_[self.abnormal_label_]
         self.X_abnormal_sample_n_ = len(X_abnormal)
         self.X_abnormal_deviations_ranked_ = sorted(abs(self._score_components(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
 
@@ -67,7 +70,7 @@ class ParallelAnomalousNudge(BaseEstimator):
 
         # Obtain offset
 
-        X_normal = X_partitions[self.normal_label]
+        X_normal = self.X_partitions_[self.normal_label_]
         X_normal_scores = self.score_samples(X_normal)
 
         rho_initial = np.median(X_normal_scores)
@@ -124,8 +127,12 @@ class ParallelAnomalousNudge(BaseEstimator):
         check_is_fitted(self)
         X = self._validate_data(X)
 
-        X_dual_scaled = np.array([self.scalers_[c].transform(X) for c in self.classes_]).T
-        X_dual_scores = np.array([est.score_samples(scaled_data) for est, scaled_data in zip(self.estimators_, X_dual_scaled.T)]).T
+        X_dual_scores = np.empty((len(X), 2))
+
+        for c_idx, c in enumerate(self.classes_):
+            XC_scaled = self.scalers_[c].transform(X)
+            XC_scores = self.estimators_[c].score_samples(XC_scaled)
+            X_dual_scores[:, c_idx] = XC_scores
 
         return X_dual_scores
 
