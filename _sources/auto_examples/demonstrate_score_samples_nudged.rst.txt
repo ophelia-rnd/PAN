@@ -555,7 +555,7 @@ Also, visualize predictions via the `predict` method.
 
 
 .. image-sg:: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_002.png
-   :alt: Shifted nudged anomaly score ($0 < \mathrm{outlier}$, $\mathrm{nu}=0.05$, $\mathrm{offset}=-0.963$), Predictions
+   :alt: Shifted nudged anomaly score ($0 < \mathrm{outlier}$, $\mathrm{nu}=0.05$, $\mathrm{offset}=-0.857$), Predictions
    :srcset: /auto_examples/images/sphx_glr_demonstrate_score_samples_nudged_002.png
    :class: sphx-glr-single-img
 
@@ -566,7 +566,7 @@ Also, visualize predictions via the `predict` method.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.268 seconds)
+   **Total running time of the script:** (0 minutes 0.404 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_score_samples_nudged.py:
