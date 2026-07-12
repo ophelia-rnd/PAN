@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
 from scipy.optimize import minimize
 
-from ._somd import SomDetector
+from ._somd import SomRepresentation
 
 # TODO: assert continuity
 
@@ -50,7 +50,7 @@ class ParallelAnomalousNudge(BaseEstimator):
             XP_scaled = scaler.transform(XP)
 
             # Use the parameters of the given estimator blueprint or let it derive internally
-            estimator = self.estimators[c] if self.estimators is not None else SomDetector(random_seed=self.random_seed, verbose=self.verbose)
+            estimator = self.estimators[c] if self.estimators is not None else SomRepresentation(random_seed=self.random_seed, verbose=self.verbose)
             estimator.fit(XP_scaled)
 
             self.X_partitions_[c] = XP

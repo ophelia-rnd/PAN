@@ -4,9 +4,9 @@ from sklearn.base import BaseEstimator, check_is_fitted, clone
 from minisom import MiniSom
 from .utils.som_hyparams import calc_som_hyparams
 
-class SomDetector(BaseEstimator):
+class SomRepresentation(BaseEstimator):
     """
-    Self-Organizing Map (SOM)-based estimator for measuring deviation from a single class representation.
+    Self-Organizing Map (SOM)-based estimator for learning a representation and for measuring deviation from it.
     """
 
     def __init__(self, d1=None, d2=None, sigma=None, topology="rectangular", learning_rate=0.5, num_iteration=20,
@@ -59,6 +59,12 @@ class SomDetector(BaseEstimator):
         som = self.__train_som(X, som_hyperparams, som_fit_hyperparams)
 
         if self.verbose:
+            print("\nFinal hyperparameters of SOM:")
+            print({
+                **som_hyperparams,
+                **som_fit_hyperparams
+            })
+
             QE, TE, QE_ROUNDED, TE_ROUNDED = self.__som_quality(som, X)
             print("\nQuality of SOM:")
             print(f"Quantization error:\t{QE}")

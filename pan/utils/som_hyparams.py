@@ -44,9 +44,6 @@ def calc_som_hyparams(X, verbose=True):
         print("Total node count (M):\t", total_node_count)
         print("Recommended sides (d1 x d2):\t", f"{height} x {width}")
         print("Initial neighborhood radius (sigma):\t", initial_sigma)
-        print()
-        print(f"Final hyperparameters:\t", hyperparams)
-        print()
         print("--------------\n")
 
     return hyperparams
