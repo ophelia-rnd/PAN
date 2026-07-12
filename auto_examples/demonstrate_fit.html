@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Demonstration of fitting the estimator &#8212; Scikit-learn Project Template 0.1.dev28+gd7755ff44 documentation</title>
+    <title>Demonstration of fitting the estimator &#8212; Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation</title>
   
   
   
@@ -42,7 +42,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=db28eab5"></script>
+    <script src="../_static/documentation_options.js?v=ba9c7fe1"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev28+gd7755ff44 documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev28+gd7755ff44 documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -432,9 +432,6 @@ Based on 100 instances, the recommended SOM hyperparameters are the following:
 Total node count (M):    50
 Recommended sides (d1 x d2):     7 x 8
 Initial neighborhood radius (sigma):     2.67
-
-Final hyperparameters:   {&#39;d1&#39;: 7, &#39;d2&#39;: 8, &#39;sigma&#39;: 2.67}
-
 --------------
 
 
@@ -2442,6 +2439,9 @@ Final hyperparameters:   {&#39;d1&#39;: 7, &#39;d2&#39;: 8, &#39;sigma&#39;: 2.6
  [ 2000 / 2000 ] 100% - 0:00:00 left
  quantization error: 0.23362384588794374
 
+Final hyperparameters of SOM:
+{&#39;input_len&#39;: 2, &#39;x&#39;: 7, &#39;y&#39;: 8, &#39;sigma&#39;: 2.67, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.5, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: 42, &#39;num_iteration&#39;: 20, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
+
 Quality of SOM:
 Quantization error:     0.23362384588794374
 Topographic error:      0.0
@@ -2453,9 +2453,6 @@ Based on 20 instances, the recommended SOM hyperparameters are the following:
 Total node count (M):    23
 Recommended sides (d1 x d2):     5 x 6
 Initial neighborhood radius (sigma):     2.0
-
-Final hyperparameters:   {&#39;d1&#39;: 5, &#39;d2&#39;: 6, &#39;sigma&#39;: 2.0}
-
 --------------
 
 
@@ -2862,6 +2859,9 @@ Final hyperparameters:   {&#39;d1&#39;: 5, &#39;d2&#39;: 6, &#39;sigma&#39;: 2.0
  [ 399 / 400 ] 100% - 0:00:00 left
  [ 400 / 400 ] 100% - 0:00:00 left
  quantization error: 0.22610214700776718
+
+Final hyperparameters of SOM:
+{&#39;input_len&#39;: 2, &#39;x&#39;: 5, &#39;y&#39;: 6, &#39;sigma&#39;: 2.0, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.5, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: 42, &#39;num_iteration&#39;: 20, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
 
 Quality of SOM:
 Quantization error:     0.22610214700776718
@@ -3280,7 +3280,1080 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42, verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42, verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
 </div>
 <br />
-<br /><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.767 seconds)</p>
+<br /><p>The <code class="docutils literal notranslate"><span class="pre">ParallelAnomalousNudge</span></code> itself does not support setting the hyperparameters for the class-conditioned SOM representations that are being learned internally.
+Instead, one can pass blueprints of <code class="xref py py-class docutils literal notranslate"><span class="pre">pan.pan.SomRepresentation</span></code> as parameters that can be configured for each class.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pan</span> <span class="kn">import</span> <span class="n">ParallelAnomalousNudge</span><span class="p">,</span> <span class="n">SomRepresentation</span>
+
+<span class="n">som_estimator_normal</span> <span class="o">=</span> <span class="n">SomRepresentation</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">d2</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.6</span><span class="p">,</span> <span class="n">num_iteration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">som_estimator_abnormal</span> <span class="o">=</span> <span class="n">SomRepresentation</span><span class="p">(</span><span class="n">d1</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">.6</span><span class="p">,</span> <span class="n">num_iteration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">som_estimators</span></a> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="n">som_estimator_normal</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="n">som_estimator_abnormal</span>
+<span class="p">}</span>
+
+<span class="n">estimator</span> <span class="o">=</span> <span class="n">ParallelAnomalousNudge</span><span class="p">(</span><span class="n">estimators</span><span class="o">=</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">som_estimators</span></a><span class="p">,</span> <span class="n">scaler</span><span class="o">=</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">nu</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">X_train</span></a><span class="p">,</span> <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">y_train</span></a><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span> [   0 / 500 ]   0% - ? it/s
+ [   0 / 500 ]   0% - ? it/s
+ [   1 / 500 ]   0% - 0:00:00 left
+ [   2 / 500 ]   0% - 0:00:00 left
+ [   3 / 500 ]   1% - 0:00:00 left
+ [   4 / 500 ]   1% - 0:00:00 left
+ [   5 / 500 ]   1% - 0:00:00 left
+ [   6 / 500 ]   1% - 0:00:00 left
+ [   7 / 500 ]   1% - 0:00:00 left
+ [   8 / 500 ]   2% - 0:00:00 left
+ [   9 / 500 ]   2% - 0:00:00 left
+ [  10 / 500 ]   2% - 0:00:00 left
+ [  11 / 500 ]   2% - 0:00:00 left
+ [  12 / 500 ]   2% - 0:00:00 left
+ [  13 / 500 ]   3% - 0:00:00 left
+ [  14 / 500 ]   3% - 0:00:00 left
+ [  15 / 500 ]   3% - 0:00:00 left
+ [  16 / 500 ]   3% - 0:00:00 left
+ [  17 / 500 ]   3% - 0:00:00 left
+ [  18 / 500 ]   4% - 0:00:00 left
+ [  19 / 500 ]   4% - 0:00:00 left
+ [  20 / 500 ]   4% - 0:00:00 left
+ [  21 / 500 ]   4% - 0:00:00 left
+ [  22 / 500 ]   4% - 0:00:00 left
+ [  23 / 500 ]   5% - 0:00:00 left
+ [  24 / 500 ]   5% - 0:00:00 left
+ [  25 / 500 ]   5% - 0:00:00 left
+ [  26 / 500 ]   5% - 0:00:00 left
+ [  27 / 500 ]   5% - 0:00:00 left
+ [  28 / 500 ]   6% - 0:00:00 left
+ [  29 / 500 ]   6% - 0:00:00 left
+ [  30 / 500 ]   6% - 0:00:00 left
+ [  31 / 500 ]   6% - 0:00:00 left
+ [  32 / 500 ]   6% - 0:00:00 left
+ [  33 / 500 ]   7% - 0:00:00 left
+ [  34 / 500 ]   7% - 0:00:00 left
+ [  35 / 500 ]   7% - 0:00:00 left
+ [  36 / 500 ]   7% - 0:00:00 left
+ [  37 / 500 ]   7% - 0:00:00 left
+ [  38 / 500 ]   8% - 0:00:00 left
+ [  39 / 500 ]   8% - 0:00:00 left
+ [  40 / 500 ]   8% - 0:00:00 left
+ [  41 / 500 ]   8% - 0:00:00 left
+ [  42 / 500 ]   8% - 0:00:00 left
+ [  43 / 500 ]   9% - 0:00:00 left
+ [  44 / 500 ]   9% - 0:00:00 left
+ [  45 / 500 ]   9% - 0:00:00 left
+ [  46 / 500 ]   9% - 0:00:00 left
+ [  47 / 500 ]   9% - 0:00:00 left
+ [  48 / 500 ]  10% - 0:00:00 left
+ [  49 / 500 ]  10% - 0:00:00 left
+ [  50 / 500 ]  10% - 0:00:00 left
+ [  51 / 500 ]  10% - 0:00:00 left
+ [  52 / 500 ]  10% - 0:00:00 left
+ [  53 / 500 ]  11% - 0:00:00 left
+ [  54 / 500 ]  11% - 0:00:00 left
+ [  55 / 500 ]  11% - 0:00:00 left
+ [  56 / 500 ]  11% - 0:00:00 left
+ [  57 / 500 ]  11% - 0:00:00 left
+ [  58 / 500 ]  12% - 0:00:00 left
+ [  59 / 500 ]  12% - 0:00:00 left
+ [  60 / 500 ]  12% - 0:00:00 left
+ [  61 / 500 ]  12% - 0:00:00 left
+ [  62 / 500 ]  12% - 0:00:00 left
+ [  63 / 500 ]  13% - 0:00:00 left
+ [  64 / 500 ]  13% - 0:00:00 left
+ [  65 / 500 ]  13% - 0:00:00 left
+ [  66 / 500 ]  13% - 0:00:00 left
+ [  67 / 500 ]  13% - 0:00:00 left
+ [  68 / 500 ]  14% - 0:00:00 left
+ [  69 / 500 ]  14% - 0:00:00 left
+ [  70 / 500 ]  14% - 0:00:00 left
+ [  71 / 500 ]  14% - 0:00:00 left
+ [  72 / 500 ]  14% - 0:00:00 left
+ [  73 / 500 ]  15% - 0:00:00 left
+ [  74 / 500 ]  15% - 0:00:00 left
+ [  75 / 500 ]  15% - 0:00:00 left
+ [  76 / 500 ]  15% - 0:00:00 left
+ [  77 / 500 ]  15% - 0:00:00 left
+ [  78 / 500 ]  16% - 0:00:00 left
+ [  79 / 500 ]  16% - 0:00:00 left
+ [  80 / 500 ]  16% - 0:00:00 left
+ [  81 / 500 ]  16% - 0:00:00 left
+ [  82 / 500 ]  16% - 0:00:00 left
+ [  83 / 500 ]  17% - 0:00:00 left
+ [  84 / 500 ]  17% - 0:00:00 left
+ [  85 / 500 ]  17% - 0:00:00 left
+ [  86 / 500 ]  17% - 0:00:00 left
+ [  87 / 500 ]  17% - 0:00:00 left
+ [  88 / 500 ]  18% - 0:00:00 left
+ [  89 / 500 ]  18% - 0:00:00 left
+ [  90 / 500 ]  18% - 0:00:00 left
+ [  91 / 500 ]  18% - 0:00:00 left
+ [  92 / 500 ]  18% - 0:00:00 left
+ [  93 / 500 ]  19% - 0:00:00 left
+ [  94 / 500 ]  19% - 0:00:00 left
+ [  95 / 500 ]  19% - 0:00:00 left
+ [  96 / 500 ]  19% - 0:00:00 left
+ [  97 / 500 ]  19% - 0:00:00 left
+ [  98 / 500 ]  20% - 0:00:00 left
+ [  99 / 500 ]  20% - 0:00:00 left
+ [ 100 / 500 ]  20% - 0:00:00 left
+ [ 101 / 500 ]  20% - 0:00:00 left
+ [ 102 / 500 ]  20% - 0:00:00 left
+ [ 103 / 500 ]  21% - 0:00:00 left
+ [ 104 / 500 ]  21% - 0:00:00 left
+ [ 105 / 500 ]  21% - 0:00:00 left
+ [ 106 / 500 ]  21% - 0:00:00 left
+ [ 107 / 500 ]  21% - 0:00:00 left
+ [ 108 / 500 ]  22% - 0:00:00 left
+ [ 109 / 500 ]  22% - 0:00:00 left
+ [ 110 / 500 ]  22% - 0:00:00 left
+ [ 111 / 500 ]  22% - 0:00:00 left
+ [ 112 / 500 ]  22% - 0:00:00 left
+ [ 113 / 500 ]  23% - 0:00:00 left
+ [ 114 / 500 ]  23% - 0:00:00 left
+ [ 115 / 500 ]  23% - 0:00:00 left
+ [ 116 / 500 ]  23% - 0:00:00 left
+ [ 117 / 500 ]  23% - 0:00:00 left
+ [ 118 / 500 ]  24% - 0:00:00 left
+ [ 119 / 500 ]  24% - 0:00:00 left
+ [ 120 / 500 ]  24% - 0:00:00 left
+ [ 121 / 500 ]  24% - 0:00:00 left
+ [ 122 / 500 ]  24% - 0:00:00 left
+ [ 123 / 500 ]  25% - 0:00:00 left
+ [ 124 / 500 ]  25% - 0:00:00 left
+ [ 125 / 500 ]  25% - 0:00:00 left
+ [ 126 / 500 ]  25% - 0:00:00 left
+ [ 127 / 500 ]  25% - 0:00:00 left
+ [ 128 / 500 ]  26% - 0:00:00 left
+ [ 129 / 500 ]  26% - 0:00:00 left
+ [ 130 / 500 ]  26% - 0:00:00 left
+ [ 131 / 500 ]  26% - 0:00:00 left
+ [ 132 / 500 ]  26% - 0:00:00 left
+ [ 133 / 500 ]  27% - 0:00:00 left
+ [ 134 / 500 ]  27% - 0:00:00 left
+ [ 135 / 500 ]  27% - 0:00:00 left
+ [ 136 / 500 ]  27% - 0:00:00 left
+ [ 137 / 500 ]  27% - 0:00:00 left
+ [ 138 / 500 ]  28% - 0:00:00 left
+ [ 139 / 500 ]  28% - 0:00:00 left
+ [ 140 / 500 ]  28% - 0:00:00 left
+ [ 141 / 500 ]  28% - 0:00:00 left
+ [ 142 / 500 ]  28% - 0:00:00 left
+ [ 143 / 500 ]  29% - 0:00:00 left
+ [ 144 / 500 ]  29% - 0:00:00 left
+ [ 145 / 500 ]  29% - 0:00:00 left
+ [ 146 / 500 ]  29% - 0:00:00 left
+ [ 147 / 500 ]  29% - 0:00:00 left
+ [ 148 / 500 ]  30% - 0:00:00 left
+ [ 149 / 500 ]  30% - 0:00:00 left
+ [ 150 / 500 ]  30% - 0:00:00 left
+ [ 151 / 500 ]  30% - 0:00:00 left
+ [ 152 / 500 ]  30% - 0:00:00 left
+ [ 153 / 500 ]  31% - 0:00:00 left
+ [ 154 / 500 ]  31% - 0:00:00 left
+ [ 155 / 500 ]  31% - 0:00:00 left
+ [ 156 / 500 ]  31% - 0:00:00 left
+ [ 157 / 500 ]  31% - 0:00:00 left
+ [ 158 / 500 ]  32% - 0:00:00 left
+ [ 159 / 500 ]  32% - 0:00:00 left
+ [ 160 / 500 ]  32% - 0:00:00 left
+ [ 161 / 500 ]  32% - 0:00:00 left
+ [ 162 / 500 ]  32% - 0:00:00 left
+ [ 163 / 500 ]  33% - 0:00:00 left
+ [ 164 / 500 ]  33% - 0:00:00 left
+ [ 165 / 500 ]  33% - 0:00:00 left
+ [ 166 / 500 ]  33% - 0:00:00 left
+ [ 167 / 500 ]  33% - 0:00:00 left
+ [ 168 / 500 ]  34% - 0:00:00 left
+ [ 169 / 500 ]  34% - 0:00:00 left
+ [ 170 / 500 ]  34% - 0:00:00 left
+ [ 171 / 500 ]  34% - 0:00:00 left
+ [ 172 / 500 ]  34% - 0:00:00 left
+ [ 173 / 500 ]  35% - 0:00:00 left
+ [ 174 / 500 ]  35% - 0:00:00 left
+ [ 175 / 500 ]  35% - 0:00:00 left
+ [ 176 / 500 ]  35% - 0:00:00 left
+ [ 177 / 500 ]  35% - 0:00:00 left
+ [ 178 / 500 ]  36% - 0:00:00 left
+ [ 179 / 500 ]  36% - 0:00:00 left
+ [ 180 / 500 ]  36% - 0:00:00 left
+ [ 181 / 500 ]  36% - 0:00:00 left
+ [ 182 / 500 ]  36% - 0:00:00 left
+ [ 183 / 500 ]  37% - 0:00:00 left
+ [ 184 / 500 ]  37% - 0:00:00 left
+ [ 185 / 500 ]  37% - 0:00:00 left
+ [ 186 / 500 ]  37% - 0:00:00 left
+ [ 187 / 500 ]  37% - 0:00:00 left
+ [ 188 / 500 ]  38% - 0:00:00 left
+ [ 189 / 500 ]  38% - 0:00:00 left
+ [ 190 / 500 ]  38% - 0:00:00 left
+ [ 191 / 500 ]  38% - 0:00:00 left
+ [ 192 / 500 ]  38% - 0:00:00 left
+ [ 193 / 500 ]  39% - 0:00:00 left
+ [ 194 / 500 ]  39% - 0:00:00 left
+ [ 195 / 500 ]  39% - 0:00:00 left
+ [ 196 / 500 ]  39% - 0:00:00 left
+ [ 197 / 500 ]  39% - 0:00:00 left
+ [ 198 / 500 ]  40% - 0:00:00 left
+ [ 199 / 500 ]  40% - 0:00:00 left
+ [ 200 / 500 ]  40% - 0:00:00 left
+ [ 201 / 500 ]  40% - 0:00:00 left
+ [ 202 / 500 ]  40% - 0:00:00 left
+ [ 203 / 500 ]  41% - 0:00:00 left
+ [ 204 / 500 ]  41% - 0:00:00 left
+ [ 205 / 500 ]  41% - 0:00:00 left
+ [ 206 / 500 ]  41% - 0:00:00 left
+ [ 207 / 500 ]  41% - 0:00:00 left
+ [ 208 / 500 ]  42% - 0:00:00 left
+ [ 209 / 500 ]  42% - 0:00:00 left
+ [ 210 / 500 ]  42% - 0:00:00 left
+ [ 211 / 500 ]  42% - 0:00:00 left
+ [ 212 / 500 ]  42% - 0:00:00 left
+ [ 213 / 500 ]  43% - 0:00:00 left
+ [ 214 / 500 ]  43% - 0:00:00 left
+ [ 215 / 500 ]  43% - 0:00:00 left
+ [ 216 / 500 ]  43% - 0:00:00 left
+ [ 217 / 500 ]  43% - 0:00:00 left
+ [ 218 / 500 ]  44% - 0:00:00 left
+ [ 219 / 500 ]  44% - 0:00:00 left
+ [ 220 / 500 ]  44% - 0:00:00 left
+ [ 221 / 500 ]  44% - 0:00:00 left
+ [ 222 / 500 ]  44% - 0:00:00 left
+ [ 223 / 500 ]  45% - 0:00:00 left
+ [ 224 / 500 ]  45% - 0:00:00 left
+ [ 225 / 500 ]  45% - 0:00:00 left
+ [ 226 / 500 ]  45% - 0:00:00 left
+ [ 227 / 500 ]  45% - 0:00:00 left
+ [ 228 / 500 ]  46% - 0:00:00 left
+ [ 229 / 500 ]  46% - 0:00:00 left
+ [ 230 / 500 ]  46% - 0:00:00 left
+ [ 231 / 500 ]  46% - 0:00:00 left
+ [ 232 / 500 ]  46% - 0:00:00 left
+ [ 233 / 500 ]  47% - 0:00:00 left
+ [ 234 / 500 ]  47% - 0:00:00 left
+ [ 235 / 500 ]  47% - 0:00:00 left
+ [ 236 / 500 ]  47% - 0:00:00 left
+ [ 237 / 500 ]  47% - 0:00:00 left
+ [ 238 / 500 ]  48% - 0:00:00 left
+ [ 239 / 500 ]  48% - 0:00:00 left
+ [ 240 / 500 ]  48% - 0:00:00 left
+ [ 241 / 500 ]  48% - 0:00:00 left
+ [ 242 / 500 ]  48% - 0:00:00 left
+ [ 243 / 500 ]  49% - 0:00:00 left
+ [ 244 / 500 ]  49% - 0:00:00 left
+ [ 245 / 500 ]  49% - 0:00:00 left
+ [ 246 / 500 ]  49% - 0:00:00 left
+ [ 247 / 500 ]  49% - 0:00:00 left
+ [ 248 / 500 ]  50% - 0:00:00 left
+ [ 249 / 500 ]  50% - 0:00:00 left
+ [ 250 / 500 ]  50% - 0:00:00 left
+ [ 251 / 500 ]  50% - 0:00:00 left
+ [ 252 / 500 ]  50% - 0:00:00 left
+ [ 253 / 500 ]  51% - 0:00:00 left
+ [ 254 / 500 ]  51% - 0:00:00 left
+ [ 255 / 500 ]  51% - 0:00:00 left
+ [ 256 / 500 ]  51% - 0:00:00 left
+ [ 257 / 500 ]  51% - 0:00:00 left
+ [ 258 / 500 ]  52% - 0:00:00 left
+ [ 259 / 500 ]  52% - 0:00:00 left
+ [ 260 / 500 ]  52% - 0:00:00 left
+ [ 261 / 500 ]  52% - 0:00:00 left
+ [ 262 / 500 ]  52% - 0:00:00 left
+ [ 263 / 500 ]  53% - 0:00:00 left
+ [ 264 / 500 ]  53% - 0:00:00 left
+ [ 265 / 500 ]  53% - 0:00:00 left
+ [ 266 / 500 ]  53% - 0:00:00 left
+ [ 267 / 500 ]  53% - 0:00:00 left
+ [ 268 / 500 ]  54% - 0:00:00 left
+ [ 269 / 500 ]  54% - 0:00:00 left
+ [ 270 / 500 ]  54% - 0:00:00 left
+ [ 271 / 500 ]  54% - 0:00:00 left
+ [ 272 / 500 ]  54% - 0:00:00 left
+ [ 273 / 500 ]  55% - 0:00:00 left
+ [ 274 / 500 ]  55% - 0:00:00 left
+ [ 275 / 500 ]  55% - 0:00:00 left
+ [ 276 / 500 ]  55% - 0:00:00 left
+ [ 277 / 500 ]  55% - 0:00:00 left
+ [ 278 / 500 ]  56% - 0:00:00 left
+ [ 279 / 500 ]  56% - 0:00:00 left
+ [ 280 / 500 ]  56% - 0:00:00 left
+ [ 281 / 500 ]  56% - 0:00:00 left
+ [ 282 / 500 ]  56% - 0:00:00 left
+ [ 283 / 500 ]  57% - 0:00:00 left
+ [ 284 / 500 ]  57% - 0:00:00 left
+ [ 285 / 500 ]  57% - 0:00:00 left
+ [ 286 / 500 ]  57% - 0:00:00 left
+ [ 287 / 500 ]  57% - 0:00:00 left
+ [ 288 / 500 ]  58% - 0:00:00 left
+ [ 289 / 500 ]  58% - 0:00:00 left
+ [ 290 / 500 ]  58% - 0:00:00 left
+ [ 291 / 500 ]  58% - 0:00:00 left
+ [ 292 / 500 ]  58% - 0:00:00 left
+ [ 293 / 500 ]  59% - 0:00:00 left
+ [ 294 / 500 ]  59% - 0:00:00 left
+ [ 295 / 500 ]  59% - 0:00:00 left
+ [ 296 / 500 ]  59% - 0:00:00 left
+ [ 297 / 500 ]  59% - 0:00:00 left
+ [ 298 / 500 ]  60% - 0:00:00 left
+ [ 299 / 500 ]  60% - 0:00:00 left
+ [ 300 / 500 ]  60% - 0:00:00 left
+ [ 301 / 500 ]  60% - 0:00:00 left
+ [ 302 / 500 ]  60% - 0:00:00 left
+ [ 303 / 500 ]  61% - 0:00:00 left
+ [ 304 / 500 ]  61% - 0:00:00 left
+ [ 305 / 500 ]  61% - 0:00:00 left
+ [ 306 / 500 ]  61% - 0:00:00 left
+ [ 307 / 500 ]  61% - 0:00:00 left
+ [ 308 / 500 ]  62% - 0:00:00 left
+ [ 309 / 500 ]  62% - 0:00:00 left
+ [ 310 / 500 ]  62% - 0:00:00 left
+ [ 311 / 500 ]  62% - 0:00:00 left
+ [ 312 / 500 ]  62% - 0:00:00 left
+ [ 313 / 500 ]  63% - 0:00:00 left
+ [ 314 / 500 ]  63% - 0:00:00 left
+ [ 315 / 500 ]  63% - 0:00:00 left
+ [ 316 / 500 ]  63% - 0:00:00 left
+ [ 317 / 500 ]  63% - 0:00:00 left
+ [ 318 / 500 ]  64% - 0:00:00 left
+ [ 319 / 500 ]  64% - 0:00:00 left
+ [ 320 / 500 ]  64% - 0:00:00 left
+ [ 321 / 500 ]  64% - 0:00:00 left
+ [ 322 / 500 ]  64% - 0:00:00 left
+ [ 323 / 500 ]  65% - 0:00:00 left
+ [ 324 / 500 ]  65% - 0:00:00 left
+ [ 325 / 500 ]  65% - 0:00:00 left
+ [ 326 / 500 ]  65% - 0:00:00 left
+ [ 327 / 500 ]  65% - 0:00:00 left
+ [ 328 / 500 ]  66% - 0:00:00 left
+ [ 329 / 500 ]  66% - 0:00:00 left
+ [ 330 / 500 ]  66% - 0:00:00 left
+ [ 331 / 500 ]  66% - 0:00:00 left
+ [ 332 / 500 ]  66% - 0:00:00 left
+ [ 333 / 500 ]  67% - 0:00:00 left
+ [ 334 / 500 ]  67% - 0:00:00 left
+ [ 335 / 500 ]  67% - 0:00:00 left
+ [ 336 / 500 ]  67% - 0:00:00 left
+ [ 337 / 500 ]  67% - 0:00:00 left
+ [ 338 / 500 ]  68% - 0:00:00 left
+ [ 339 / 500 ]  68% - 0:00:00 left
+ [ 340 / 500 ]  68% - 0:00:00 left
+ [ 341 / 500 ]  68% - 0:00:00 left
+ [ 342 / 500 ]  68% - 0:00:00 left
+ [ 343 / 500 ]  69% - 0:00:00 left
+ [ 344 / 500 ]  69% - 0:00:00 left
+ [ 345 / 500 ]  69% - 0:00:00 left
+ [ 346 / 500 ]  69% - 0:00:00 left
+ [ 347 / 500 ]  69% - 0:00:00 left
+ [ 348 / 500 ]  70% - 0:00:00 left
+ [ 349 / 500 ]  70% - 0:00:00 left
+ [ 350 / 500 ]  70% - 0:00:00 left
+ [ 351 / 500 ]  70% - 0:00:00 left
+ [ 352 / 500 ]  70% - 0:00:00 left
+ [ 353 / 500 ]  71% - 0:00:00 left
+ [ 354 / 500 ]  71% - 0:00:00 left
+ [ 355 / 500 ]  71% - 0:00:00 left
+ [ 356 / 500 ]  71% - 0:00:00 left
+ [ 357 / 500 ]  71% - 0:00:00 left
+ [ 358 / 500 ]  72% - 0:00:00 left
+ [ 359 / 500 ]  72% - 0:00:00 left
+ [ 360 / 500 ]  72% - 0:00:00 left
+ [ 361 / 500 ]  72% - 0:00:00 left
+ [ 362 / 500 ]  72% - 0:00:00 left
+ [ 363 / 500 ]  73% - 0:00:00 left
+ [ 364 / 500 ]  73% - 0:00:00 left
+ [ 365 / 500 ]  73% - 0:00:00 left
+ [ 366 / 500 ]  73% - 0:00:00 left
+ [ 367 / 500 ]  73% - 0:00:00 left
+ [ 368 / 500 ]  74% - 0:00:00 left
+ [ 369 / 500 ]  74% - 0:00:00 left
+ [ 370 / 500 ]  74% - 0:00:00 left
+ [ 371 / 500 ]  74% - 0:00:00 left
+ [ 372 / 500 ]  74% - 0:00:00 left
+ [ 373 / 500 ]  75% - 0:00:00 left
+ [ 374 / 500 ]  75% - 0:00:00 left
+ [ 375 / 500 ]  75% - 0:00:00 left
+ [ 376 / 500 ]  75% - 0:00:00 left
+ [ 377 / 500 ]  75% - 0:00:00 left
+ [ 378 / 500 ]  76% - 0:00:00 left
+ [ 379 / 500 ]  76% - 0:00:00 left
+ [ 380 / 500 ]  76% - 0:00:00 left
+ [ 381 / 500 ]  76% - 0:00:00 left
+ [ 382 / 500 ]  76% - 0:00:00 left
+ [ 383 / 500 ]  77% - 0:00:00 left
+ [ 384 / 500 ]  77% - 0:00:00 left
+ [ 385 / 500 ]  77% - 0:00:00 left
+ [ 386 / 500 ]  77% - 0:00:00 left
+ [ 387 / 500 ]  77% - 0:00:00 left
+ [ 388 / 500 ]  78% - 0:00:00 left
+ [ 389 / 500 ]  78% - 0:00:00 left
+ [ 390 / 500 ]  78% - 0:00:00 left
+ [ 391 / 500 ]  78% - 0:00:00 left
+ [ 392 / 500 ]  78% - 0:00:00 left
+ [ 393 / 500 ]  79% - 0:00:00 left
+ [ 394 / 500 ]  79% - 0:00:00 left
+ [ 395 / 500 ]  79% - 0:00:00 left
+ [ 396 / 500 ]  79% - 0:00:00 left
+ [ 397 / 500 ]  79% - 0:00:00 left
+ [ 398 / 500 ]  80% - 0:00:00 left
+ [ 399 / 500 ]  80% - 0:00:00 left
+ [ 400 / 500 ]  80% - 0:00:00 left
+ [ 401 / 500 ]  80% - 0:00:00 left
+ [ 402 / 500 ]  80% - 0:00:00 left
+ [ 403 / 500 ]  81% - 0:00:00 left
+ [ 404 / 500 ]  81% - 0:00:00 left
+ [ 405 / 500 ]  81% - 0:00:00 left
+ [ 406 / 500 ]  81% - 0:00:00 left
+ [ 407 / 500 ]  81% - 0:00:00 left
+ [ 408 / 500 ]  82% - 0:00:00 left
+ [ 409 / 500 ]  82% - 0:00:00 left
+ [ 410 / 500 ]  82% - 0:00:00 left
+ [ 411 / 500 ]  82% - 0:00:00 left
+ [ 412 / 500 ]  82% - 0:00:00 left
+ [ 413 / 500 ]  83% - 0:00:00 left
+ [ 414 / 500 ]  83% - 0:00:00 left
+ [ 415 / 500 ]  83% - 0:00:00 left
+ [ 416 / 500 ]  83% - 0:00:00 left
+ [ 417 / 500 ]  83% - 0:00:00 left
+ [ 418 / 500 ]  84% - 0:00:00 left
+ [ 419 / 500 ]  84% - 0:00:00 left
+ [ 420 / 500 ]  84% - 0:00:00 left
+ [ 421 / 500 ]  84% - 0:00:00 left
+ [ 422 / 500 ]  84% - 0:00:00 left
+ [ 423 / 500 ]  85% - 0:00:00 left
+ [ 424 / 500 ]  85% - 0:00:00 left
+ [ 425 / 500 ]  85% - 0:00:00 left
+ [ 426 / 500 ]  85% - 0:00:00 left
+ [ 427 / 500 ]  85% - 0:00:00 left
+ [ 428 / 500 ]  86% - 0:00:00 left
+ [ 429 / 500 ]  86% - 0:00:00 left
+ [ 430 / 500 ]  86% - 0:00:00 left
+ [ 431 / 500 ]  86% - 0:00:00 left
+ [ 432 / 500 ]  86% - 0:00:00 left
+ [ 433 / 500 ]  87% - 0:00:00 left
+ [ 434 / 500 ]  87% - 0:00:00 left
+ [ 435 / 500 ]  87% - 0:00:00 left
+ [ 436 / 500 ]  87% - 0:00:00 left
+ [ 437 / 500 ]  87% - 0:00:00 left
+ [ 438 / 500 ]  88% - 0:00:00 left
+ [ 439 / 500 ]  88% - 0:00:00 left
+ [ 440 / 500 ]  88% - 0:00:00 left
+ [ 441 / 500 ]  88% - 0:00:00 left
+ [ 442 / 500 ]  88% - 0:00:00 left
+ [ 443 / 500 ]  89% - 0:00:00 left
+ [ 444 / 500 ]  89% - 0:00:00 left
+ [ 445 / 500 ]  89% - 0:00:00 left
+ [ 446 / 500 ]  89% - 0:00:00 left
+ [ 447 / 500 ]  89% - 0:00:00 left
+ [ 448 / 500 ]  90% - 0:00:00 left
+ [ 449 / 500 ]  90% - 0:00:00 left
+ [ 450 / 500 ]  90% - 0:00:00 left
+ [ 451 / 500 ]  90% - 0:00:00 left
+ [ 452 / 500 ]  90% - 0:00:00 left
+ [ 453 / 500 ]  91% - 0:00:00 left
+ [ 454 / 500 ]  91% - 0:00:00 left
+ [ 455 / 500 ]  91% - 0:00:00 left
+ [ 456 / 500 ]  91% - 0:00:00 left
+ [ 457 / 500 ]  91% - 0:00:00 left
+ [ 458 / 500 ]  92% - 0:00:00 left
+ [ 459 / 500 ]  92% - 0:00:00 left
+ [ 460 / 500 ]  92% - 0:00:00 left
+ [ 461 / 500 ]  92% - 0:00:00 left
+ [ 462 / 500 ]  92% - 0:00:00 left
+ [ 463 / 500 ]  93% - 0:00:00 left
+ [ 464 / 500 ]  93% - 0:00:00 left
+ [ 465 / 500 ]  93% - 0:00:00 left
+ [ 466 / 500 ]  93% - 0:00:00 left
+ [ 467 / 500 ]  93% - 0:00:00 left
+ [ 468 / 500 ]  94% - 0:00:00 left
+ [ 469 / 500 ]  94% - 0:00:00 left
+ [ 470 / 500 ]  94% - 0:00:00 left
+ [ 471 / 500 ]  94% - 0:00:00 left
+ [ 472 / 500 ]  94% - 0:00:00 left
+ [ 473 / 500 ]  95% - 0:00:00 left
+ [ 474 / 500 ]  95% - 0:00:00 left
+ [ 475 / 500 ]  95% - 0:00:00 left
+ [ 476 / 500 ]  95% - 0:00:00 left
+ [ 477 / 500 ]  95% - 0:00:00 left
+ [ 478 / 500 ]  96% - 0:00:00 left
+ [ 479 / 500 ]  96% - 0:00:00 left
+ [ 480 / 500 ]  96% - 0:00:00 left
+ [ 481 / 500 ]  96% - 0:00:00 left
+ [ 482 / 500 ]  96% - 0:00:00 left
+ [ 483 / 500 ]  97% - 0:00:00 left
+ [ 484 / 500 ]  97% - 0:00:00 left
+ [ 485 / 500 ]  97% - 0:00:00 left
+ [ 486 / 500 ]  97% - 0:00:00 left
+ [ 487 / 500 ]  97% - 0:00:00 left
+ [ 488 / 500 ]  98% - 0:00:00 left
+ [ 489 / 500 ]  98% - 0:00:00 left
+ [ 490 / 500 ]  98% - 0:00:00 left
+ [ 491 / 500 ]  98% - 0:00:00 left
+ [ 492 / 500 ]  98% - 0:00:00 left
+ [ 493 / 500 ]  99% - 0:00:00 left
+ [ 494 / 500 ]  99% - 0:00:00 left
+ [ 495 / 500 ]  99% - 0:00:00 left
+ [ 496 / 500 ]  99% - 0:00:00 left
+ [ 497 / 500 ]  99% - 0:00:00 left
+ [ 498 / 500 ] 100% - 0:00:00 left
+ [ 499 / 500 ] 100% - 0:00:00 left
+ [ 500 / 500 ] 100% - 0:00:00 left
+ quantization error: 0.439148406671753
+
+Final hyperparameters of SOM:
+{&#39;input_len&#39;: 2, &#39;x&#39;: 10, &#39;y&#39;: 5, &#39;sigma&#39;: 5.0, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.6, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: None, &#39;num_iteration&#39;: 5, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
+
+Quality of SOM:
+Quantization error:     0.439148406671753
+Topographic error:      0.0
+Quantization error (rounded):   0.439
+Topographic error (rounded):    0.0
+
+ [   0 / 100 ]   0% - ? it/s
+ [   0 / 100 ]   0% - ? it/s
+ [   1 / 100 ]   1% - 0:00:00 left
+ [   2 / 100 ]   2% - 0:00:00 left
+ [   3 / 100 ]   3% - 0:00:00 left
+ [   4 / 100 ]   4% - 0:00:00 left
+ [   5 / 100 ]   5% - 0:00:00 left
+ [   6 / 100 ]   6% - 0:00:00 left
+ [   7 / 100 ]   7% - 0:00:00 left
+ [   8 / 100 ]   8% - 0:00:00 left
+ [   9 / 100 ]   9% - 0:00:00 left
+ [  10 / 100 ]  10% - 0:00:00 left
+ [  11 / 100 ]  11% - 0:00:00 left
+ [  12 / 100 ]  12% - 0:00:00 left
+ [  13 / 100 ]  13% - 0:00:00 left
+ [  14 / 100 ]  14% - 0:00:00 left
+ [  15 / 100 ]  15% - 0:00:00 left
+ [  16 / 100 ]  16% - 0:00:00 left
+ [  17 / 100 ]  17% - 0:00:00 left
+ [  18 / 100 ]  18% - 0:00:00 left
+ [  19 / 100 ]  19% - 0:00:00 left
+ [  20 / 100 ]  20% - 0:00:00 left
+ [  21 / 100 ]  21% - 0:00:00 left
+ [  22 / 100 ]  22% - 0:00:00 left
+ [  23 / 100 ]  23% - 0:00:00 left
+ [  24 / 100 ]  24% - 0:00:00 left
+ [  25 / 100 ]  25% - 0:00:00 left
+ [  26 / 100 ]  26% - 0:00:00 left
+ [  27 / 100 ]  27% - 0:00:00 left
+ [  28 / 100 ]  28% - 0:00:00 left
+ [  29 / 100 ]  29% - 0:00:00 left
+ [  30 / 100 ]  30% - 0:00:00 left
+ [  31 / 100 ]  31% - 0:00:00 left
+ [  32 / 100 ]  32% - 0:00:00 left
+ [  33 / 100 ]  33% - 0:00:00 left
+ [  34 / 100 ]  34% - 0:00:00 left
+ [  35 / 100 ]  35% - 0:00:00 left
+ [  36 / 100 ]  36% - 0:00:00 left
+ [  37 / 100 ]  37% - 0:00:00 left
+ [  38 / 100 ]  38% - 0:00:00 left
+ [  39 / 100 ]  39% - 0:00:00 left
+ [  40 / 100 ]  40% - 0:00:00 left
+ [  41 / 100 ]  41% - 0:00:00 left
+ [  42 / 100 ]  42% - 0:00:00 left
+ [  43 / 100 ]  43% - 0:00:00 left
+ [  44 / 100 ]  44% - 0:00:00 left
+ [  45 / 100 ]  45% - 0:00:00 left
+ [  46 / 100 ]  46% - 0:00:00 left
+ [  47 / 100 ]  47% - 0:00:00 left
+ [  48 / 100 ]  48% - 0:00:00 left
+ [  49 / 100 ]  49% - 0:00:00 left
+ [  50 / 100 ]  50% - 0:00:00 left
+ [  51 / 100 ]  51% - 0:00:00 left
+ [  52 / 100 ]  52% - 0:00:00 left
+ [  53 / 100 ]  53% - 0:00:00 left
+ [  54 / 100 ]  54% - 0:00:00 left
+ [  55 / 100 ]  55% - 0:00:00 left
+ [  56 / 100 ]  56% - 0:00:00 left
+ [  57 / 100 ]  57% - 0:00:00 left
+ [  58 / 100 ]  58% - 0:00:00 left
+ [  59 / 100 ]  59% - 0:00:00 left
+ [  60 / 100 ]  60% - 0:00:00 left
+ [  61 / 100 ]  61% - 0:00:00 left
+ [  62 / 100 ]  62% - 0:00:00 left
+ [  63 / 100 ]  63% - 0:00:00 left
+ [  64 / 100 ]  64% - 0:00:00 left
+ [  65 / 100 ]  65% - 0:00:00 left
+ [  66 / 100 ]  66% - 0:00:00 left
+ [  67 / 100 ]  67% - 0:00:00 left
+ [  68 / 100 ]  68% - 0:00:00 left
+ [  69 / 100 ]  69% - 0:00:00 left
+ [  70 / 100 ]  70% - 0:00:00 left
+ [  71 / 100 ]  71% - 0:00:00 left
+ [  72 / 100 ]  72% - 0:00:00 left
+ [  73 / 100 ]  73% - 0:00:00 left
+ [  74 / 100 ]  74% - 0:00:00 left
+ [  75 / 100 ]  75% - 0:00:00 left
+ [  76 / 100 ]  76% - 0:00:00 left
+ [  77 / 100 ]  77% - 0:00:00 left
+ [  78 / 100 ]  78% - 0:00:00 left
+ [  79 / 100 ]  79% - 0:00:00 left
+ [  80 / 100 ]  80% - 0:00:00 left
+ [  81 / 100 ]  81% - 0:00:00 left
+ [  82 / 100 ]  82% - 0:00:00 left
+ [  83 / 100 ]  83% - 0:00:00 left
+ [  84 / 100 ]  84% - 0:00:00 left
+ [  85 / 100 ]  85% - 0:00:00 left
+ [  86 / 100 ]  86% - 0:00:00 left
+ [  87 / 100 ]  87% - 0:00:00 left
+ [  88 / 100 ]  88% - 0:00:00 left
+ [  89 / 100 ]  89% - 0:00:00 left
+ [  90 / 100 ]  90% - 0:00:00 left
+ [  91 / 100 ]  91% - 0:00:00 left
+ [  92 / 100 ]  92% - 0:00:00 left
+ [  93 / 100 ]  93% - 0:00:00 left
+ [  94 / 100 ]  94% - 0:00:00 left
+ [  95 / 100 ]  95% - 0:00:00 left
+ [  96 / 100 ]  96% - 0:00:00 left
+ [  97 / 100 ]  97% - 0:00:00 left
+ [  98 / 100 ]  98% - 0:00:00 left
+ [  99 / 100 ]  99% - 0:00:00 left
+ [ 100 / 100 ] 100% - 0:00:00 left
+ quantization error: 0.6610861732716116
+
+Final hyperparameters of SOM:
+{&#39;input_len&#39;: 2, &#39;x&#39;: 3, &#39;y&#39;: 3, &#39;sigma&#39;: 2.5, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.6, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: None, &#39;num_iteration&#39;: 5, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
+
+Quality of SOM:
+Quantization error:     0.6610861732716116
+Topographic error:      0.0
+Quantization error (rounded):   0.661
+Topographic error (rounded):    0.0
+
+Offset is calculated as:         -1.405280335239456
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentation(d1=10, d2=5,
+                                                        learning_rate=0.6,
+                                                        num_iteration=5,
+                                                        sigma=5.0,
+                                                        verbose=True),
+                                   1: SomRepresentation(d1=3, d2=3,
+                                                        learning_rate=0.6,
+                                                        num_iteration=5,
+                                                        sigma=2.5,
+                                                        verbose=True)},
+                       nu=0.05, random_seed=42, verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentation(d1=10, d2=5,
+                                                        learning_rate=0.6,
+                                                        num_iteration=5,
+                                                        sigma=5.0,
+                                                        verbose=True),
+                                   1: SomRepresentation(d1=3, d2=3,
+                                                        learning_rate=0.6,
+                                                        num_iteration=5,
+                                                        sigma=2.5,
+                                                        verbose=True)},
+                       nu=0.05, random_seed=42, verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
+</div>
+<br />
+<br /><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.749 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-demonstrate-fit-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/2b03f3628d06dcad76687cedef0e6b54/demonstrate_fit.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">demonstrate_fit.ipynb</span></code></a></p>
