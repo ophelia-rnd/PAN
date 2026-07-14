@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Demonstration of fitting the estimator &#8212; Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation</title>
+    <title>Demonstration of fitting the estimator &#8212; Scikit-learn Project Template 0.1.dev33+g23fa03729 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=ba9c7fe1"></script>
+    <script src="../_static/documentation_options.js?v=7bc2fdcb"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev30+g15c928f1a documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev33+g23fa03729 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev33+g23fa03729 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -2448,6 +2448,9 @@ Topographic error:      0.0
 Quantization error (rounded):   0.234
 Topographic error (rounded):    0.0
 
+Offset is calculated as:         -0.8566503567126024
+
+
 --------------
 Based on 20 instances, the recommended SOM hyperparameters are the following:
 Total node count (M):    23
@@ -2868,6 +2871,9 @@ Quantization error:     0.22610214700776718
 Topographic error:      0.0
 Quantization error (rounded):   0.226
 Topographic error (rounded):    0.0
+
+Offset is calculated as:         -0.6216392668921258
+
 
 Offset is calculated as:         -0.856650341976303
 </pre></div>
@@ -3798,16 +3804,19 @@ Instead, one can pass blueprints of <code class="xref py py-class docutils liter
  [ 498 / 500 ] 100% - 0:00:00 left
  [ 499 / 500 ] 100% - 0:00:00 left
  [ 500 / 500 ] 100% - 0:00:00 left
- quantization error: 0.439148406671753
+ quantization error: 0.41426624105816123
 
 Final hyperparameters of SOM:
 {&#39;input_len&#39;: 2, &#39;x&#39;: 10, &#39;y&#39;: 5, &#39;sigma&#39;: 5.0, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.6, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: None, &#39;num_iteration&#39;: 5, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
 
 Quality of SOM:
-Quantization error:     0.439148406671753
+Quantization error:     0.41426624105816123
 Topographic error:      0.0
-Quantization error (rounded):   0.439
+Quantization error (rounded):   0.414
 Topographic error (rounded):    0.0
+
+Offset is calculated as:         -0.22013405469302663
+
 
  [   0 / 100 ]   0% - ? it/s
  [   0 / 100 ]   0% - ? it/s
@@ -3911,18 +3920,21 @@ Topographic error (rounded):    0.0
  [  98 / 100 ]  98% - 0:00:00 left
  [  99 / 100 ]  99% - 0:00:00 left
  [ 100 / 100 ] 100% - 0:00:00 left
- quantization error: 0.6610861732716116
+ quantization error: 0.6727551172173648
 
 Final hyperparameters of SOM:
 {&#39;input_len&#39;: 2, &#39;x&#39;: 3, &#39;y&#39;: 3, &#39;sigma&#39;: 2.5, &#39;topology&#39;: &#39;rectangular&#39;, &#39;learning_rate&#39;: 0.6, &#39;decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;sigma_decay_function&#39;: &#39;asymptotic_decay&#39;, &#39;neighborhood_function&#39;: &#39;gaussian&#39;, &#39;activation_distance&#39;: &#39;euclidean&#39;, &#39;random_seed&#39;: None, &#39;num_iteration&#39;: 5, &#39;random_order&#39;: True, &#39;use_epochs&#39;: True, &#39;verbose&#39;: True}
 
 Quality of SOM:
-Quantization error:     0.6610861732716116
+Quantization error:     0.6727551172173648
 Topographic error:      0.0
-Quantization error (rounded):   0.661
+Quantization error (rounded):   0.673
 Topographic error (rounded):    0.0
 
-Offset is calculated as:         -1.405280335239456
+Offset is calculated as:         -0.45259541498631717
+
+
+Offset is calculated as:         -1.489776876984007
 </pre></div>
 </div>
 <div class="output_subarea output_html rendered_html output_result">
@@ -4353,7 +4365,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
                        nu=0.05, random_seed=42, verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
 </div>
 <br />
-<br /><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.749 seconds)</p>
+<br /><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.812 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-demonstrate-fit-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/2b03f3628d06dcad76687cedef0e6b54/demonstrate_fit.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">demonstrate_fit.ipynb</span></code></a></p>
