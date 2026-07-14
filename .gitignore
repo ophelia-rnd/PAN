@@ -73,6 +73,7 @@ target/
 .DS_Store
 .AppleDouble
 .LSOverride
+.idea
 
 # auto-generated files
 pan/_version.py
