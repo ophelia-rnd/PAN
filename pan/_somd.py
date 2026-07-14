@@ -4,15 +4,17 @@ from sklearn.base import BaseEstimator, check_is_fitted, clone
 from minisom import MiniSom
 from .utils.som_hyparams import calc_som_hyparams
 
+# FIXME: name SomRepresentationAD ?
 class SomRepresentation(BaseEstimator):
     """
     Self-Organizing Map (SOM)-based estimator for learning a representation and for measuring deviation from it.
     """
 
-    def __init__(self, d1=None, d2=None, sigma=None, topology="rectangular", learning_rate=0.5, num_iteration=20,
+    def __init__(self, nu=0.5, d1=None, d2=None, sigma=None, topology="rectangular", learning_rate=0.5, num_iteration=20,
                     decay_function="asymptotic_decay", sigma_decay_function="asymptotic_decay",
                     neighborhood_function='gaussian', activation_distance='euclidean',
                     use_epochs=True, random_order=True, random_seed=None, verbose=False):
+        self.nu = nu
         self.d1 = d1
         self.d2 = d2
         self.sigma = sigma
@@ -74,6 +76,14 @@ class SomRepresentation(BaseEstimator):
 
         self.som_ = som
 
+        X_scores = self.score_samples(X)
+        rho_initial = np.median(X_scores)
+        optim_res = minimize(self.__nu_loss, x0=[rho_initial], args=(X_scores, self.nu), bounds=[(None, 0)])
+        self.offset_ = optim_res.x[0]
+
+        if self.verbose:
+            print(f"\nOffset is calculated as:\t", self.offset_, "\n")
+
         return self
 
     def score_samples(self, X):
@@ -86,7 +96,25 @@ class SomRepresentation(BaseEstimator):
 
         quantization_errors = np.linalg.norm(X - self.som_.quantization(X), axis=1)
         return (quantization_errors * -1)
-    
+
+    def decision_function(self, X):
+        return self.score_samples(X) - self.offset_
+
+    def predict(self, X):
+        """
+        Perform classification on samples in X.
+        A label of +1 or -1 is returned for inliers and outliers, respectively.
+        """
+
+        scores = self.decision_function(X)
+        cnd_inlier = scores >= 0
+
+        y_pred = np.zeros_like(scores, dtype=np.intp)
+        y_pred[cnd_inlier] = 1
+        y_pred[~cnd_inlier] = -1
+
+        return y_pred
+
     def __main_params_set(self):
         return not (self.d1 is None or self.d2 is None or self.sigma is None)
 
@@ -104,3 +132,8 @@ class SomRepresentation(BaseEstimator):
         QE = som.quantization_error(X)
         TE = som.topographic_error(X)
         return QE, TE, np.round(QE, digits), np.round(TE, digits)
+
+    def __nu_loss(self, rho, scores, nu):
+        hinge_loss = np.maximum(0, rho - scores)
+        boundary_penalty = nu * rho
+        return np.mean(hinge_loss) - boundary_penalty

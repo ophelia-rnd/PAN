@@ -50,7 +50,7 @@ class ParallelAnomalousNudge(BaseEstimator):
             XP_scaled = scaler.transform(XP)
 
             # Use the parameters of the given estimator blueprint or let it derive internally
-            estimator = self.estimators[c] if self.estimators is not None else SomRepresentation(random_seed=self.random_seed, verbose=self.verbose)
+            estimator = self.estimators[c] if self.estimators is not None else SomRepresentation(nu=self.nu, random_seed=self.random_seed, verbose=self.verbose)
             estimator.fit(XP_scaled)
 
             self.X_partitions_[c] = XP
@@ -100,10 +100,10 @@ class ParallelAnomalousNudge(BaseEstimator):
         X_nudged_score = self.__internal_nudged_score_formula(X_normal_score, X_anomalous_rank)
 
         return np.array(X_nudged_score)
-    
+
     def decision_function(self, X):
         return self.score_samples(X) - self.offset_
-    
+
     def predict(self, X):
         """
         Perform classification on samples in X.
