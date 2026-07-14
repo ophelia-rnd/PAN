@@ -2,6 +2,8 @@ import numpy as np
 
 from sklearn.base import BaseEstimator, check_is_fitted, clone
 from minisom import MiniSom
+from scipy.optimize import minimize
+
 from .utils.som_hyparams import calc_som_hyparams
 
 # FIXME: name SomRepresentationAD ?
