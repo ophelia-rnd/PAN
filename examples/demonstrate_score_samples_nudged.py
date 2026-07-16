@@ -16,7 +16,7 @@ from pan import ParallelAnomalousNudge
 
 # Generate train / test data
 X_train, y_train = generate_train_data(n_normal=100, n_abnormal=20, random_seed=42)
-X_test, y_test = generate_train_data(n_normal=100, n_abnormal=20, random_seed=84)
+X_test, y_test = generate_test_data(n_normal=100, n_abnormal=20, random_seed=84)
 
 # Fit PAN model on train data
 from sklearn.preprocessing import StandardScaler
