@@ -96,8 +96,7 @@ class ParallelAnomalousNudge(BaseEstimator):
         X_normal_score = X_score[:, self.normal_label_idx_].ravel()
         X_abnormal_score = X_score[:, self.abnormal_label_idx_].ravel()
 
-        X_anomalous_rank = np.searchsorted(self.X_abnormal_deviations_ranked_, abs(X_abnormal_score)) + 1
-        X_nudged_score = self.__internal_nudged_score_formula(X_normal_score, X_anomalous_rank)
+        X_nudged_score = self.__nudge_normal_component(X_normal_score, X_abnormal_score)
 
         return np.array(X_nudged_score)
 
@@ -142,12 +141,17 @@ class ParallelAnomalousNudge(BaseEstimator):
     def _score_component_abnormal(self, X):
         return self._score_components(X)[:, self.abnormal_label_idx_].ravel()
 
-    def __sample_nudge_amount(self, X_rank):
+    def __nudge_normal_component(self, X_normal_score, X_abnormal_score):
+        X_anomalous_rank = np.searchsorted(self.X_abnormal_deviations_ranked_, abs(X_abnormal_score)) + 1
+        X_nudged_score = self.__internal_nudge_formula(X_normal_score, X_anomalous_rank)
+        return X_nudged_score
+
+    def __internal_nudge_formula(self, X_normal_score, X_anomalous_rank):
+        return X_normal_score * self.__nudge_factor(X_anomalous_rank)
+
+    def __nudge_factor(self, X_rank):
         multiplier = ((self.X_abnormal_sample_n_ + 1) - X_rank) / self.X_abnormal_sample_n_
         return (multiplier * (self.omega - 1)) + 1
-
-    def __internal_nudged_score_formula(self, X_normal_score, X_anomalous_rank):
-        return X_normal_score * self.__sample_nudge_amount(X_anomalous_rank)
 
     def __nu_loss(self, rho, scores, nu):
         hinge_loss = np.maximum(0, rho - scores)
