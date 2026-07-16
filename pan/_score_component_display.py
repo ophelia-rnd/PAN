@@ -82,7 +82,7 @@ class ScoreComponentDisplay():
         )
 
         threshold = estimator.offset_
-        kwargs.setdefault("cmap", ListedColormap(["crimson", "cornflowerblue"]))
+        kwargs.setdefault("cmap", ListedColormap(["#b87bc9", "#6cd4d9"]))
 
         db_display.plot(
             ax=ax,
