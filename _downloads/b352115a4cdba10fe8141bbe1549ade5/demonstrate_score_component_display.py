@@ -34,7 +34,10 @@ from pan import ScoreComponentDisplay
 disp = ScoreComponentDisplay.from_estimator(estimator, np.vstack((X_train, X_test)),
                                             threshold_style={"colors": "black", "linewidths": 2, "linestyles": "dashed"},
                                             cmap="tab10", alpha=.25) \
-    .plot_samples_by_class(X_train, X_test, y_train, y_test)
+    .plot_samples(X_train[y_train == 0], style_preset="train") \
+    .plot_samples(X_train[y_train == 1], style_preset="train_anomaly") \
+    .plot_samples(X_test[y_test == 0], style_preset="test") \
+    .plot_samples(X_test[y_test == 1], style_preset="test_anomaly")
 
 plt.margins(.1)
 plt.legend()

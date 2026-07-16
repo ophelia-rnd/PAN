@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:01.942** total execution time for 5 files **from all galleries**:
+**00:01.424** total execution time for 5 files **from all galleries**:
 
 .. container::
 
@@ -32,18 +32,18 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_demonstrate_score_component_display.py` (``../examples/demonstrate_score_component_display.py``)
-     - 00:00.978
+   * - :ref:`sphx_glr_auto_examples_demonstrate_fit.py` (``../examples/demonstrate_fit.py``)
+     - 00:00.695
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_nudged.py` (``../examples/demonstrate_score_samples_nudged.py``)
-     - 00:00.398
+     - 00:00.293
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_demonstrate_fit.py` (``../examples/demonstrate_fit.py``)
-     - 00:00.229
+   * - :ref:`sphx_glr_auto_examples_demonstrate_score_component_display.py` (``../examples/demonstrate_score_component_display.py``)
+     - 00:00.194
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_via_normal.py` (``../examples/demonstrate_score_samples_via_normal.py``)
-     - 00:00.188
+     - 00:00.133
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_via_abnormal.py` (``../examples/demonstrate_score_samples_via_abnormal.py``)
-     - 00:00.149
+     - 00:00.108
      - 0.0
