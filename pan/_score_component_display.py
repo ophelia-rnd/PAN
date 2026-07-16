@@ -1,7 +1,59 @@
 import numpy as np
 
+from typing import Literal
 from sklearn.inspection import DecisionBoundaryDisplay
 from pan import ParallelAnomalousNudge
+
+style_train = {
+    "marker": "o",
+    "s": 500,
+    "edgecolor": "black",
+    "color": "none",
+    "linewidth": 2,
+    "alpha": .3,
+    "zorder": 11,
+    "label": "train",
+}
+
+style_train_anomaly = {
+    **style_train,
+    "edgecolor": "crimson",
+    "label": "train (anomaly)",
+}
+
+style_val = {
+    "marker": "s",
+    "s": 300,
+    "edgecolor": "black",
+    "color": "none",
+    "linewidth": 2,
+    "alpha": .4,
+    "zorder": 12,
+    "label": "validation",
+}
+
+style_val_anomaly = {
+    **style_val,
+    "edgecolor": "crimson",
+    "label": "validation (anomaly)",
+}
+
+style_test = {
+    "marker": "^",
+    "s": 300,
+    "edgecolor": "royalblue",
+    "color": "none",
+    "linewidth": 2,
+    "alpha": .8,
+    "zorder": 13,
+    "label": "test",
+}
+
+style_test_anomaly = {
+    **style_test,
+    "edgecolor": "crimson",
+    "label": "test (anomaly)",
+}
 
 class ScoreComponentDisplay():
 
@@ -50,32 +102,31 @@ class ScoreComponentDisplay():
             db_display.xx1,
             db_display.response,
             levels=[threshold],
-            zorder=1,
+            zorder=100,
             **threshold_style,
         )
 
         return display
 
-    def plot_samples(self, X, **kwargs):
+    def plot_samples(self, X, style_preset:Literal["train", "train_anomaly", "val", "val_anomaly", "test", "test_anomaly"]=None, **kwargs):
         assert hasattr(self, "estimator_") and self.estimator_ is not None
         assert hasattr(self, "ax_") and self.ax_ is not None
+
+        _kwargs = {}
+        if style_preset is not None:
+            if style_preset == "train": _kwargs = {**style_train}
+            elif style_preset == "train_anomaly": _kwargs = {**style_train_anomaly}
+            elif style_preset == "val": _kwargs = {**style_val}
+            elif style_preset == "val_anomaly": _kwargs = {**style_val_anomaly}
+            elif style_preset == "test": _kwargs = {**style_test}
+            elif style_preset == "test_anomaly": _kwargs = {**style_test_anomaly}
+        _kwargs = {**_kwargs, **kwargs}
 
         X_score_comp_1 = self.estimator_._score_component_normal(X) * -1
         X_score_comp_2 = self.estimator_._score_component_abnormal(X) * -1
 
         ax = self.ax_
-        ax.scatter(X_score_comp_1, X_score_comp_2, **kwargs)
+        ax.scatter(X_score_comp_1, X_score_comp_2, **_kwargs)
         ax.set_aspect("equal")
 
         return self
-
-    def plot_samples_by_class(self, X_train, X_test, y_train, y_test, normal_label=0, abnormal_label=1, **kwargs):
-        return self \
-            .plot_samples(X_train[y_train == normal_label],
-                          marker="o", s=500, edgecolor="black", linewidth=2, color="none", alpha=.3, zorder=1, label="train (normal)") \
-            .plot_samples(X_train[y_train == abnormal_label],
-                          marker="X", s=500, edgecolor="lightcoral", linewidth=2, color="none", alpha=.5, zorder=2, label="train (anomaly)") \
-            .plot_samples(X_test[y_test == normal_label],
-                          marker="^", s=100, edgecolor="cornflowerblue", linewidth=2, color="none", alpha=.8, zorder=3, label="test (normal)") \
-            .plot_samples(X_test[y_test == abnormal_label],
-                          marker="^", s=100, edgecolor="crimson", linewidth=2, color="none", alpha=.8, zorder=4, label="test (anomaly)")
