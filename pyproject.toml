@@ -13,7 +13,7 @@ description = "A template for scikit-learn compatible packages."
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-  "scikit-learn>=1.4.2",
+  "scikit-learn==1.5.2",
   "minisom<=2.3.5",
   "pandas",
   "numpy",
@@ -45,7 +45,7 @@ platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 
 [tool.pixi.dependencies]
 python = ">=3.9"
-scikit-learn = ">=1.4.2"
+scikit-learn = "==1.5.2"
 
 [tool.pixi.pypi-dependencies]
 pan = { path=".", editable=true }
