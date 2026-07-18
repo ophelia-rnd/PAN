@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Demonstration of scoring samples by their normal representation score component &#8212; Scikit-learn Project Template 0.1.dev37+g667c000f1 documentation</title>
+    <title>Demonstration of scoring samples by their normal representation score component &#8212; Scikit-learn Project Template 0.1.dev39+g8b4e413aa documentation</title>
   
   
   
@@ -42,7 +42,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=31badc5c"></script>
+    <script src="../_static/documentation_options.js?v=36bd910c"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
@@ -127,8 +127,8 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev37+g667c000f1 documentation - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev37+g667c000f1 documentation - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Scikit-learn Project Template 0.1.dev39+g8b4e413aa documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Scikit-learn Project Template 0.1.dev39+g8b4e413aa documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -346,6 +346,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="demonstrate_score_component_display.html">Observe proximity to learned representations and relationship to threshold</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Demonstration of scoring samples by their normal representation score component</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrate_score_samples_via_abnormal.html">Demonstration of scoring samples by their anomalous representation score component</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demonstrate_detector_vs_classifier.html">Demonstration of using PAN as a classifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demonstrate_score_samples_nudged.html">Demonstration of the nudge effect</a></li>
 </ul>
 </div>
@@ -833,7 +834,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
+</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(nu=0.05, random_seed=42)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
 </div>
 <br />
 <br /><div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtain nudge-free scores (anomaly scores with respect to the learned normal representation)</span>
@@ -849,7 +850,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_demonstrate_score_samples_via_normal_001.png" srcset="../_images/sphx_glr_demonstrate_score_samples_via_normal_001.png" alt="Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$)" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.186 seconds)</p>
+<img src="../_images/sphx_glr_demonstrate_score_samples_via_normal_001.png" srcset="../_images/sphx_glr_demonstrate_score_samples_via_normal_001.png" alt="Anomaly score based on Normal representation only ($0 \simeq \mathrm{inlier}$)" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> (0 minutes 0.195 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-demonstrate-score-samples-via-normal-py">
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/382fc3587a180d554f8d69e3b9dabcd5/demonstrate_score_samples_via_normal.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">demonstrate_score_samples_via_normal.ipynb</span></code></a></p>
