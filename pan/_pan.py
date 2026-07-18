@@ -1,6 +1,6 @@
 import numpy as np
 
-from sklearn.base import BaseEstimator, check_is_fitted, clone
+from sklearn.base import BaseEstimator, OutlierMixin, ClassifierMixin, check_is_fitted, clone
 from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
 from scipy.optimize import minimize
@@ -9,7 +9,7 @@ from ._somd import SomRepresentation
 
 # TODO: assert continuity
 
-class ParallelAnomalousNudge(BaseEstimator):
+class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
     """
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
@@ -118,6 +118,12 @@ class ParallelAnomalousNudge(BaseEstimator):
 
         return y_pred
 
+    def fit_predict(self, X, y=None, **kwargs):
+        return self.fit(X, y, **kwargs).predict(X)
+
+    def wrapAsClassifier(self):
+        return ParallelAnomalousNudgeClassifierWrapper(self)
+
     def _score_components(self, X):
         """
         Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the trained SOM representation, for all representation, in a tuple format.
@@ -157,3 +163,22 @@ class ParallelAnomalousNudge(BaseEstimator):
         hinge_loss = np.maximum(0, rho - scores)
         boundary_penalty = nu * rho
         return np.mean(hinge_loss) - boundary_penalty
+
+    def _more_tags(self):
+        return {"requires_y": True}
+
+class ParallelAnomalousNudgeClassifierWrapper(ClassifierMixin, BaseEstimator):
+
+    def __init__(self, estimator:ParallelAnomalousNudge):
+        self.estimator = estimator
+        self.classes_ = np.array([0, 1])
+
+    def fit(self, X, y):
+        self.estimator.fit(X, y)
+        return self
+
+    def decision_function(self, X):
+        return -self.estimator.decision_function(X)
+
+    def predict(self, X):
+        return np.where(self.estimator.predict(X) == -1, 1, 0)
