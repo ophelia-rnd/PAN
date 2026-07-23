@@ -182,3 +182,6 @@ class ParallelAnomalousNudgeClassifierWrapper(ClassifierMixin, BaseEstimator):
 
     def predict(self, X):
         return np.where(self.estimator.predict(X) == -1, 1, 0)
+
+    def unwrapNoveltyDetector(self):
+        return self.estimator

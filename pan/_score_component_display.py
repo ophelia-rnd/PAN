@@ -58,7 +58,7 @@ style_test_anomaly = {
 class ScoreComponentDisplay():
 
     @classmethod
-    def from_estimator(cls, estimator:ParallelAnomalousNudge, X,
+    def from_estimator(cls, estimator:ParallelAnomalousNudge, X, threshold=None,
                        xlabel="Deviation from Normal", ylabel="Deviation from Anomalous",
                        ax=None, threshold_style={}, **kwargs):
         from matplotlib.colors import ListedColormap
@@ -81,7 +81,7 @@ class ScoreComponentDisplay():
             ylabel=ylabel,
         )
 
-        threshold = estimator.offset_
+        threshold = threshold if threshold is not None else estimator.offset_
         kwargs.setdefault("cmap", ListedColormap(["#b87bc9", "#6cd4d9"]))
 
         db_display.plot(
