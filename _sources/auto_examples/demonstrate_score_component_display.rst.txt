@@ -83,7 +83,7 @@ Observe proximity to learned representations and relationship to threshold
     Quantization error (rounded):   0.234
     Topographic error (rounded):    0.0
 
-    Offset is calculated as:         -1.0423916010980205 
+    Offset is calculated as:         -1.044160348755749 
 
 
     --------------
@@ -108,7 +108,7 @@ Observe proximity to learned representations and relationship to threshold
     Offset is calculated as:         -0.7170944282655197 
 
 
-    Offset is calculated as:         -1.2272455946633511 
+    Offset is calculated as:         -1.2272455946633514 
 
 
 
@@ -562,7 +562,7 @@ Display score components and how they relate to the threshold based on the combi
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.294 seconds)
+   **Total running time of the script:** (0 minutes 0.226 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_score_component_display.py:

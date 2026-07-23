@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:03.243** total execution time for 6 files **from auto_examples**:
+**00:02.768** total execution time for 6 files **from auto_examples**:
 
 .. container::
 
@@ -33,20 +33,20 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_demonstrate_fit.py` (``demonstrate_fit.py``)
-     - 00:01.859
+     - 00:01.669
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_nudged.py` (``demonstrate_score_samples_nudged.py``)
-     - 00:00.393
+     - 00:00.327
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_detector_vs_classifier.py` (``demonstrate_detector_vs_classifier.py``)
-     - 00:00.350
+     - 00:00.263
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_component_display.py` (``demonstrate_score_component_display.py``)
-     - 00:00.294
+     - 00:00.226
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_via_normal.py` (``demonstrate_score_samples_via_normal.py``)
-     - 00:00.195
+     - 00:00.159
      - 0.0
    * - :ref:`sphx_glr_auto_examples_demonstrate_score_samples_via_abnormal.py` (``demonstrate_score_samples_via_abnormal.py``)
-     - 00:00.152
+     - 00:00.123
      - 0.0
