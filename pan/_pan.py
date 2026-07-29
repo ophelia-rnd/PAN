@@ -14,12 +14,16 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, estimators=None, scaler=StandardScaler(), nu=0.5, omega=2.0, random_seed=None, verbose=False):
+    def __init__(self, estimators=None, scaler=StandardScaler(), nu=0.5, omega=2.0,
+                 normal_label=0, abnormal_label=1,
+                 random_seed=None, verbose=False):
 
         self.estimators = estimators
         self.scaler = scaler
         self.nu = nu
         self.omega = omega
+        self.normal_label = normal_label
+        self.abnormal_label = abnormal_label
         self.random_seed = random_seed
         self.verbose = verbose
 
@@ -33,10 +37,8 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
         if self.estimators is not None:
             assert (len(self.classes_) == 2) and (len(self.estimators) == 2), "PAN currently supports two classes."
         
-        self.normal_label_ = 0
-        self.abnormal_label_ = 1
-        self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label_)
-        self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label_)
+        self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label)
+        self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label)
 
         self.scalers_ = {}
         self.estimators_ = {}
@@ -60,7 +62,7 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
 
         # Create ranking of abnormal training data
 
-        X_abnormal = self.X_partitions_[self.abnormal_label_]
+        X_abnormal = self.X_partitions_[self.abnormal_label]
         self.X_abnormal_sample_n_ = len(X_abnormal)
         self.X_abnormal_deviations_ranked_ = sorted(abs(self._score_components(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
 
@@ -70,7 +72,7 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
 
         # Obtain offset
 
-        X_normal = self.X_partitions_[self.normal_label_]
+        X_normal = self.X_partitions_[self.normal_label]
         X_normal_scores = self.score_samples(X_normal)
 
         rho_initial = np.median(X_normal_scores)
