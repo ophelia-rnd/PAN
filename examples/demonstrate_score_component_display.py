@@ -32,8 +32,7 @@ import matplotlib.pyplot as plt
 from pan import ScoreComponentDisplay
 
 disp = ScoreComponentDisplay.from_estimator(estimator, np.vstack((X_train, X_test)),
-                                            threshold_style={"colors": "black", "linewidths": 2, "linestyles": "dashed"},
-                                            alpha=.5) \
+                                            threshold_style={"colors": "black", "linewidths": 2, "linestyles": "dashed"}) \
     .plot_samples(X_train[y_train == 0], style_preset="train") \
     .plot_samples(X_train[y_train == 1], style_preset="train_anomaly") \
     .plot_samples(X_test[y_test == 0], style_preset="test") \

@@ -82,7 +82,7 @@ class ScoreComponentDisplay():
         )
 
         threshold = threshold if threshold is not None else estimator.offset_
-        kwargs.setdefault("cmap", ListedColormap(["#b87bc9", "#6cd4d9"]))
+        kwargs.setdefault("cmap", ListedColormap(["#dcbde4", "#b6eaec"]))
 
         db_display.plot(
             ax=ax,
