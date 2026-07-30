@@ -124,7 +124,9 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
         return self.fit(X, y, **kwargs).predict(X)
 
     def wrapAsClassifier(self):
-        return ParallelAnomalousNudgeClassifierWrapper(self)
+        clsf = ParallelAnomalousNudgeClassifierWrapper(self)
+        clsf.classes_ = self.classes_.copy()
+        return clsf
 
     def _score_components(self, X):
         """
