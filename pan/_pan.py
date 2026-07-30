@@ -173,17 +173,17 @@ class ParallelAnomalousNudgeClassifierWrapper(ClassifierMixin, BaseEstimator):
 
     def __init__(self, estimator:ParallelAnomalousNudge):
         self.estimator = estimator
-        self.classes_ = np.array([0, 1])
 
     def fit(self, X, y):
         self.estimator.fit(X, y)
+        self.classes_ = self.estimator.classes_
         return self
 
     def decision_function(self, X):
-        return -self.estimator.decision_function(X)
+        return self.estimator.decision_function(X) * -1
 
     def predict(self, X):
-        return np.where(self.estimator.predict(X) == -1, 1, 0)
+        return np.where(self.decision_function(X) > 0, self.classes_[1], self.classes_[0])
 
     def unwrapNoveltyDetector(self):
         return self.estimator
