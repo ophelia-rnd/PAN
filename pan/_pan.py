@@ -124,9 +124,7 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
         return self.fit(X, y, **kwargs).predict(X)
 
     def wrapAsClassifier(self):
-        clsf = ParallelAnomalousNudgeClassifierWrapper(self)
-        clsf.classes_ = self.classes_.copy()
-        return clsf
+        return ParallelAnomalousNudgeClassifier(self)
 
     def _score_components(self, X):
         """
@@ -171,21 +169,24 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
     def _more_tags(self):
         return {"requires_y": True}
 
-class ParallelAnomalousNudgeClassifierWrapper(ClassifierMixin, BaseEstimator):
+class ParallelAnomalousNudgeClassifier(ClassifierMixin, BaseEstimator):
 
-    def __init__(self, estimator:ParallelAnomalousNudge):
-        self.estimator = estimator
+    NORMAL = 0
+    ABNORMAL = 1
+
+    def __init__(self, detector:ParallelAnomalousNudge):
+        self.detector = detector
 
     def fit(self, X, y):
-        self.estimator.fit(X, y)
-        self.classes_ = self.estimator.classes_
+        self.detector.fit(X, y)
+        self.classes_ = [self.NORMAL, self.ABNORMAL]
         return self
 
     def decision_function(self, X):
-        return self.estimator.decision_function(X) * -1
+        return self.detector.decision_function(X) * -1
 
     def predict(self, X):
-        return np.where(self.decision_function(X) > 0, self.classes_[1], self.classes_[0])
+        return np.where(self.decision_function(X) > 0, self.ABNORMAL, self.NORMAL)
 
     def unwrapNoveltyDetector(self):
-        return self.estimator
+        return self.detector
