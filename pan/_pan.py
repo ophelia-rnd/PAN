@@ -179,7 +179,7 @@ class ParallelAnomalousNudgeClassifier(ClassifierMixin, BaseEstimator):
 
     def fit(self, X, y):
         self.detector.fit(X, y)
-        self.classes_ = [self.NORMAL, self.ABNORMAL]
+        self.classes_ = np.array([self.NORMAL, self.ABNORMAL])
         return self
 
     def decision_function(self, X):
