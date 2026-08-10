@@ -5,19 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pan"
 dynamic = ["version"]
-authors = [
-  { name="Vighnesh Birodkar", email="vighneshbirodkar@nyu.edu" },
-  { name="Guillaume Lemaitre", email="g.lemaitre58@gmail.com" },
-]
-description = "A template for scikit-learn compatible packages."
-readme = "README.md"
+authors = [{name = "Mate Balogh", email = "matebalogh@ophelia-rnd.dev"}]
+maintainers = [{name = "Mate Balogh", email = "matebalogh@ophelia-rnd.dev"}]
+description = "Parallel Anomalous Nudge (PAN)"
 requires-python = ">=3.9"
 dependencies = [
-  "scikit-learn==1.5.2",
-  "minisom<=2.3.5",
-  "pandas",
-  "numpy",
-  "matplotlib"
+    "scikit-learn==1.5.2",
+    "minisom",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "minisom-representation @ git+https://github.com/ophelia-rnd/minisom-representation"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
