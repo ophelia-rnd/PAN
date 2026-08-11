@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.multiclass import unique_labels
 from scipy.optimize import minimize
 
-from ._somd import SomRepresentation
+from ._som_estimator import SomRepresentationEstimator
 
 # TODO: assert continuity
 
@@ -14,8 +14,7 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
     Parallel Anomalous Nudge (PAN) for detecting novelties.
     """
 
-    def __init__(self, estimators=None, scaler=StandardScaler(), nu=0.5, omega=2.0,
-                 normal_label=0, abnormal_label=1,
+    def __init__(self, estimators, scaler, nu=0.5, omega=2.0, normal_label=0, abnormal_label=1,
                  random_seed=None, verbose=False):
 
         self.estimators = estimators
@@ -27,42 +26,73 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
         self.random_seed = random_seed
         self.verbose = verbose
 
-    def fit(self, X, y, continuity_violation_limit=0.1):
+    @classmethod
+    def from_estimators(cls, estimators:dict, scaler=StandardScaler(), nu=0.5, omega=2.0, normal_label=0, abnormal_label=1, random_seed=None, verbose=False):
+        return cls(estimators=estimators, scaler=scaler, nu=nu, omega=omega, normal_label=normal_label, abnormal_label=abnormal_label, random_seed=random_seed, verbose=verbose)
+
+    @classmethod
+    def with_derived_estimators(cls, X, y, scaler=StandardScaler(), nu=0.5, omega=2.0, normal_label=0, abnormal_label=1, random_seed=None, verbose=False):
+        unique_classes = unique_labels(y).astype(int)
+        X_partitions = cls.__partition_data(X, y, unique_classes)
+        X_partitions_scaled, _ = cls.__scale_partitions(X_partitions, unique_classes, scaler)
+        estimators = {}
+
+        for c in unique_classes:
+            XP_scaled = X_partitions_scaled[c]
+            estimator = SomRepresentationEstimator.with_derived_som_representation(X=XP_scaled, nu=nu, random_seed=random_seed, verbose=verbose)
+            estimator.fit(XP_scaled)
+            estimators[c] = estimator
+
+        return cls(estimators=estimators, scaler=scaler, nu=nu, omega=omega, normal_label=normal_label, abnormal_label=abnormal_label, random_seed=random_seed, verbose=verbose)
+
+    @classmethod
+    def __partition_data(cls, X, y, unique_classes):
+        X_partitions = {}
+        for c in unique_classes:
+            XP = X[y == c]
+            X_partitions[c] = XP
+        return X_partitions
+
+    @classmethod
+    def __scale_partitions(cls, X_partitions, unique_classes, scaler):
+        X_partitions_scaled = {}
+        scalers = {}
+        for c, XP in [(c, X_partitions[c]) for c in unique_classes]:
+            scaler = clone(scaler).fit(XP)
+            XP_scaled = scaler.transform(XP)
+            X_partitions_scaled[c] = XP_scaled
+            scalers[c] = scaler
+        return X_partitions_scaled, scalers
+
+    def fit(self, X, y):
         X, y = self._validate_data(X, y)
-
-        self.X_ = X
-        self.y_ = y
         self.classes_ = unique_labels(y).astype(int)
-
-        if self.estimators is not None:
-            assert (len(self.classes_) == 2) and (len(self.estimators) == 2), "PAN currently supports two classes."
+        assert (len(self.classes_) == 2) and (len(self.estimators) == 2), "PAN currently supports two classes."
         
         self.normal_label_idx_ = np.argwhere(self.classes_ == self.normal_label)
         self.abnormal_label_idx_ = np.argwhere(self.classes_ == self.abnormal_label)
 
-        self.scalers_ = {}
-        self.estimators_ = {}
-        self.X_partitions_ = {}
-        self.X_partitions_scaled_ = {}
+        X_partitions = self.__partition_data(X, y, self.classes_)
+        X_partitions_scaled, scalers = self.__scale_partitions(X_partitions, self.classes_, self.scaler)
+        estimators = {}
 
         # Fit partition-wise scalers, transform X, learn SOM-based detectors
         for c in self.classes_:
-            XP = X[y == c]
-            scaler = clone(self.scaler).fit(XP)
-            XP_scaled = scaler.transform(XP)
-
-            # Use the parameters of the given estimator blueprint or let it derive internally
-            estimator = self.estimators[c] if self.estimators is not None else SomRepresentation(nu=self.nu, random_seed=self.random_seed, verbose=self.verbose)
+            XP_scaled = X_partitions_scaled[c]
+            estimator = (
+                clone(self.estimators[c])
+                if self.estimators.get(c, None) is not None
+                else SomRepresentationEstimator.with_derived_som_representation(X=XP_scaled, nu=self.nu, random_seed=self.random_seed, verbose=self.verbose)
+            )
             estimator.fit(XP_scaled)
+            estimators[c] = estimator
 
-            self.X_partitions_[c] = XP
-            self.X_partitions_scaled_[c] = XP_scaled
-            self.scalers_[c] = scaler
-            self.estimators_[c] = estimator
+        self.scalers_ = scalers
+        self.estimators_ = estimators
 
         # Create ranking of abnormal training data
 
-        X_abnormal = self.X_partitions_[self.abnormal_label]
+        X_abnormal = X_partitions[self.abnormal_label]
         self.X_abnormal_sample_n_ = len(X_abnormal)
         self.X_abnormal_deviations_ranked_ = sorted(abs(self._score_components(X_abnormal)[:, self.abnormal_label_idx_].ravel()))
 
@@ -72,7 +102,7 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
 
         # Obtain offset
 
-        X_normal = self.X_partitions_[self.normal_label]
+        X_normal = X_partitions[self.normal_label]
         X_normal_scores = self.score_samples(X_normal)
 
         rho_initial = np.median(X_normal_scores)
@@ -80,10 +110,16 @@ class ParallelAnomalousNudge(OutlierMixin, BaseEstimator):
         self.offset_ = optim_res.x[0]
 
         if self.verbose:
-            print(f"\nOffset is calculated as:\t", self.offset_, "\n")
+            print("\n", "A PAN estimator has been fitted as follows:")
+            print("-----------------------------------------------------------------", "\n")
+            print("Hyperparameters:", "\n")
+            print(self.get_params(), "\n")
+
+            print("Learned parameters:", "\n")
+            print(f"Offset:\t{self.offset_}")
 
         return self
-    
+
     def score_samples(self, X):
         """
         Opposite of the deviation of X measured from the closest reference point (best-matching unit, BMU) of the Normal SOM representation,
