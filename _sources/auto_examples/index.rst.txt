@@ -21,35 +21,137 @@ Introductory examples.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Demonstration of training the SOM representation estimator">
+    <div class="sphx-glr-thumbcontainer" tooltip="Training the SOM representation estimator">
 
 .. only:: html
 
-  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_train_som_representation_estimator_thumb.png
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_01_train_som_representation_estimator_thumb.png
     :alt:
 
-  :doc:`/auto_examples/demonstrate_train_som_representation_estimator`
+  :doc:`/auto_examples/demonstrate_01_train_som_representation_estimator`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Demonstration of training the SOM representation estimator</div>
+      <div class="sphx-glr-thumbnail-title">Training the SOM representation estimator</div>
     </div>
 
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Demonstration of training the PAN estimator">
+    <div class="sphx-glr-thumbcontainer" tooltip="Training the PAN estimator">
 
 .. only:: html
 
-  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_train_pan_estimator_thumb.png
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_02_train_pan_estimator_thumb.png
     :alt:
 
-  :doc:`/auto_examples/demonstrate_train_pan_estimator`
+  :doc:`/auto_examples/demonstrate_02_train_pan_estimator`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Demonstration of training the PAN estimator</div>
+      <div class="sphx-glr-thumbnail-title">Training the PAN estimator</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="PAN estimator as Outlier Detector vs Classifier">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_03_pan_estimator_types_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_03_pan_estimator_types`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">PAN estimator as Outlier Detector vs Classifier</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Scoring samples based on deviation from the normal representation">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_04_inspect_score_samples_normal_aspect_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_04_inspect_score_samples_normal_aspect`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Scoring samples based on deviation from the normal representation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Scoring samples based on deviation from the abnormal representation">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_05_inspect_score_samples_abnormal_aspect_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_05_inspect_score_samples_abnormal_aspect`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Scoring samples based on deviation from the abnormal representation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Scoring samples based on the nudge mechanism">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_06_inspect_score_samples_nudged_aspect_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_06_inspect_score_samples_nudged_aspect`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Scoring samples based on the nudge mechanism</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Decision score and predictions based on the nudge mechanism">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_07_inspect_predictions_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_07_inspect_predictions`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Decision score and predictions based on the nudge mechanism</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Proximity to learned representations and relationship to threshold">
+
+.. only:: html
+
+  .. image:: /auto_examples/images/thumb/sphx_glr_demonstrate_08_inspect_score_component_display_thumb.png
+    :alt:
+
+  :doc:`/auto_examples/demonstrate_08_inspect_score_component_display`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Proximity to learned representations and relationship to threshold</div>
     </div>
 
 
@@ -63,8 +165,14 @@ Introductory examples.
 .. toctree::
    :hidden:
 
-   /auto_examples/demonstrate_train_som_representation_estimator
-   /auto_examples/demonstrate_train_pan_estimator
+   /auto_examples/demonstrate_01_train_som_representation_estimator
+   /auto_examples/demonstrate_02_train_pan_estimator
+   /auto_examples/demonstrate_03_pan_estimator_types
+   /auto_examples/demonstrate_04_inspect_score_samples_normal_aspect
+   /auto_examples/demonstrate_05_inspect_score_samples_abnormal_aspect
+   /auto_examples/demonstrate_06_inspect_score_samples_nudged_aspect
+   /auto_examples/demonstrate_07_inspect_predictions
+   /auto_examples/demonstrate_08_inspect_score_component_display
 
 
 .. only:: html

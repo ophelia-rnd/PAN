@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:02.758** total execution time for 2 files **from auto_examples**:
+**00:04.245** total execution time for 8 files **from auto_examples**:
 
 .. container::
 
@@ -32,9 +32,27 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_demonstrate_train_som_representation_estimator.py` (``demonstrate_train_som_representation_estimator.py``)
-     - 00:02.455
+   * - :ref:`sphx_glr_auto_examples_demonstrate_01_train_som_representation_estimator.py` (``demonstrate_01_train_som_representation_estimator.py``)
+     - 00:02.511
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_demonstrate_train_pan_estimator.py` (``demonstrate_train_pan_estimator.py``)
-     - 00:00.304
+   * - :ref:`sphx_glr_auto_examples_demonstrate_07_inspect_predictions.py` (``demonstrate_07_inspect_predictions.py``)
+     - 00:00.332
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_06_inspect_score_samples_nudged_aspect.py` (``demonstrate_06_inspect_score_samples_nudged_aspect.py``)
+     - 00:00.307
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_02_train_pan_estimator.py` (``demonstrate_02_train_pan_estimator.py``)
+     - 00:00.299
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_08_inspect_score_component_display.py` (``demonstrate_08_inspect_score_component_display.py``)
+     - 00:00.251
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_04_inspect_score_samples_normal_aspect.py` (``demonstrate_04_inspect_score_samples_normal_aspect.py``)
+     - 00:00.209
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_05_inspect_score_samples_abnormal_aspect.py` (``demonstrate_05_inspect_score_samples_abnormal_aspect.py``)
+     - 00:00.203
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_demonstrate_03_pan_estimator_types.py` (``demonstrate_03_pan_estimator_types.py``)
+     - 00:00.134
      - 0.0
