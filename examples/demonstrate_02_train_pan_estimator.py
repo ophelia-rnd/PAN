@@ -1,6 +1,6 @@
 """
 ===============================================================
-Demonstration of training the PAN estimator
+Training the PAN estimator
 ===============================================================
 """
 
@@ -11,7 +11,7 @@ VERBOSE = True
 #%%
 
 # generate train / test data
-from utils.dataset import generate_train_data, generate_test_data
+from examples.utils.dataset import generate_train_data, generate_test_data
 X_train, y_train = generate_train_data(n_normal=100, n_abnormal=20, random_seed=RANDOM_SEED)
 X_test, y_test = generate_test_data(n_normal=100, n_abnormal=20, random_seed=RANDOM_SEED*2)
 

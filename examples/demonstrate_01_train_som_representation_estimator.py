@@ -1,6 +1,6 @@
 """
 ===================================================================
-Demonstration of training the SOM representation estimator
+Training the SOM representation estimator
 ===================================================================
 """
 
@@ -11,7 +11,7 @@ VERBOSE = True
 #%%
 
 # generate train / test data
-from utils.dataset import generate_train_data
+from examples.utils.dataset import generate_train_data
 X_train, _ = generate_train_data(n_normal=100, n_abnormal=20, random_seed=RANDOM_SEED)
 
 #%%
