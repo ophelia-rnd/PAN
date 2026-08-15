@@ -491,16 +491,16 @@ Scoring samples based on the nudge mechanism
     }
     </style><div id="sk-container-id-9" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(estimators={np.int64(0): SomRepresentationEstimator(nu=0.1,
                                                                                random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9411a7f20&gt;),
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2911ae810&gt;),
                                        np.int64(1): SomRepresentationEstimator(nu=0.1,
                                                                                random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9431754f0&gt;)},
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2904e79b0&gt;)},
                            nu=0.1, random_seed=42, scaler=StandardScaler())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-21" type="checkbox" ><label for="sk-estimator-id-21" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(estimators={np.int64(0): SomRepresentationEstimator(nu=0.1,
                                                                                random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9411a7f20&gt;),
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2911ae810&gt;),
                                        np.int64(1): SomRepresentationEstimator(nu=0.1,
                                                                                random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9431754f0&gt;)},
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2904e79b0&gt;)},
                            nu=0.1, random_seed=42, scaler=StandardScaler())</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-22" type="checkbox" ><label for="sk-estimator-id-22" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-23" type="checkbox" ><label for="sk-estimator-id-23" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
     </div>
     <br />
@@ -625,7 +625,7 @@ Scoring samples based on the nudge mechanism
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.307 seconds)
+   **Total running time of the script:** (0 minutes 0.305 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_06_inspect_score_samples_nudged_aspect.py:

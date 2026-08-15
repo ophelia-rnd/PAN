@@ -112,7 +112,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc942101400>, 'verbose': True} 
+    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -144,7 +144,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc95a0665d0>, 'verbose': True} 
+    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d250>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -168,7 +168,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c8d40>, 'verbose': True} 
+    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d460>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -192,7 +192,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc9410bad50>, 'verbose': True} 
+    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d490>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -204,9 +204,9 @@ Training the PAN estimator
     Hyperparameters: 
 
     {'abnormal_label': 1, 'estimators': {np.int64(0): SomRepresentationEstimator(random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc942101400>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0>,
                                verbose=True), np.int64(1): SomRepresentationEstimator(random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc95a0665d0>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d250>,
                                verbose=True)}, 'normal_label': 0, 'nu': 0.5, 'omega': 2.0, 'random_seed': 42, 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'scaler': StandardScaler(), 'verbose': True} 
 
     Learned parameters: 
@@ -622,16 +622,16 @@ Training the PAN estimator
       background-color: var(--sklearn-color-fitted-level-3);
     }
     </style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(estimators={np.int64(0): SomRepresentationEstimator(random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc942101400&gt;,
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0&gt;,
                                                                                verbose=True),
                                        np.int64(1): SomRepresentationEstimator(random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc95a0665d0&gt;,
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d250&gt;,
                                                                                verbose=True)},
                            random_seed=42, scaler=StandardScaler(), verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(estimators={np.int64(0): SomRepresentationEstimator(random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc942101400&gt;,
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0&gt;,
                                                                                verbose=True),
                                        np.int64(1): SomRepresentationEstimator(random_seed=42,
-                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc95a0665d0&gt;,
+                                                                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826d250&gt;,
                                                                                verbose=True)},
                            random_seed=42, scaler=StandardScaler(), verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
     </div>
@@ -694,7 +694,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.05, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc940a9a900>, 'verbose': True} 
+    {'nu': 0.05, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc290488a10>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -718,7 +718,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.05, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc940a9aff0>, 'verbose': True} 
+    {'nu': 0.05, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc290488650>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -730,9 +730,9 @@ Training the PAN estimator
     Hyperparameters: 
 
     {'abnormal_label': 1, 'estimators': {0: SomRepresentationEstimator(nu=0.05, random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c8bf0>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc29016eb10>,
                                verbose=True), 1: SomRepresentationEstimator(nu=0.05, random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc940200c80>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc290489460>,
                                verbose=True)}, 'normal_label': 0, 'nu': 0.05, 'omega': 3.5, 'random_seed': 42, 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'scaler': StandardScaler(), 'verbose': True} 
 
     Learned parameters: 
@@ -1149,20 +1149,20 @@ Training the PAN estimator
     }
     </style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentationEstimator(nu=0.05,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c8bf0&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc29016eb10&gt;,
                                                                      verbose=True),
                                        1: SomRepresentationEstimator(nu=0.05,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc940200c80&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc290489460&gt;,
                                                                      verbose=True)},
                            nu=0.05, omega=3.5, random_seed=42,
                            scaler=StandardScaler(), verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentationEstimator(nu=0.05,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c8bf0&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc29016eb10&gt;,
                                                                      verbose=True),
                                        1: SomRepresentationEstimator(nu=0.05,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc940200c80&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc290489460&gt;,
                                                                      verbose=True)},
                            nu=0.05, omega=3.5, random_seed=42,
                            scaler=StandardScaler(), verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
@@ -1227,7 +1227,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.25, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc940a9b500>, 'verbose': True} 
+    {'nu': 0.25, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2904887d0>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -1251,7 +1251,7 @@ Training the PAN estimator
 
     Hyperparameters: 
 
-    {'nu': 0.1, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc940a9bb90>, 'verbose': True} 
+    {'nu': 0.1, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc290489c40>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -1263,9 +1263,9 @@ Training the PAN estimator
     Hyperparameters: 
 
     {'abnormal_label': 1, 'estimators': {0: SomRepresentationEstimator(nu=0.25, random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc9410b5550>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc2a819fc20>,
                                verbose=True), 1: SomRepresentationEstimator(nu=0.1, random_seed=42,
-                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc941cb1910>,
+                               som_representation=<minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0>,
                                verbose=True)}, 'normal_label': 0, 'nu': 0.25, 'omega': 3.5, 'random_seed': 42, 'scaler__copy': True, 'scaler__with_mean': True, 'scaler__with_std': True, 'scaler': StandardScaler(), 'verbose': True} 
 
     Learned parameters: 
@@ -1682,20 +1682,20 @@ Training the PAN estimator
     }
     </style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentationEstimator(nu=0.25,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9410b5550&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a819fc20&gt;,
                                                                      verbose=True),
                                        1: SomRepresentationEstimator(nu=0.1,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc941cb1910&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0&gt;,
                                                                      verbose=True)},
                            nu=0.25, omega=3.5, random_seed=42,
                            scaler=StandardScaler(), verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;ParallelAnomalousNudge<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>ParallelAnomalousNudge(estimators={0: SomRepresentationEstimator(nu=0.25,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9410b5550&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a819fc20&gt;,
                                                                      verbose=True),
                                        1: SomRepresentationEstimator(nu=0.1,
                                                                      random_seed=42,
-                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc941cb1910&gt;,
+                                                                     som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2910ce3f0&gt;,
                                                                      verbose=True)},
                            nu=0.25, omega=3.5, random_seed=42,
                            scaler=StandardScaler(), verbose=True)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">scaler: StandardScaler</label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;StandardScaler<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></label><div class="sk-toggleable__content fitted"><pre>StandardScaler()</pre></div> </div></div></div></div></div></div></div></div></div>
@@ -1706,7 +1706,7 @@ Training the PAN estimator
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 0.299 seconds)
+   **Total running time of the script:** (0 minutes 0.301 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_02_train_pan_estimator.py:

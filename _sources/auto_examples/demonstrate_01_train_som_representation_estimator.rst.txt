@@ -110,7 +110,7 @@ Training the SOM representation estimator
 
     Hyperparameters: 
 
-    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c9b80>, 'verbose': True} 
+    {'nu': 0.5, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2904b80e0>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -525,9 +525,9 @@ Training the SOM representation estimator
       background-color: var(--sklearn-color-fitted-level-3);
     }
     </style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SomRepresentationEstimator(random_seed=42,
-                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c9b80&gt;,
+                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2904b80e0&gt;,
                                verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;SomRepresentationEstimator<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>SomRepresentationEstimator(random_seed=42,
-                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9583c9b80&gt;,
+                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2904b80e0&gt;,
                                verbose=True)</pre></div> </div></div></div></div>
     </div>
     <br />
@@ -582,7 +582,7 @@ Training the SOM representation estimator
 
     Hyperparameters: 
 
-    {'nu': 0.01, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc9411dcfb0>, 'verbose': True} 
+    {'nu': 0.01, 'random_seed': 42, 'som_representation': <minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826da00>, 'verbose': True} 
 
     Learned parameters: 
 
@@ -997,9 +997,9 @@ Training the SOM representation estimator
       background-color: var(--sklearn-color-fitted-level-3);
     }
     </style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SomRepresentationEstimator(nu=0.01, random_seed=42,
-                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9411dcfb0&gt;,
+                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826da00&gt;,
                                verbose=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;SomRepresentationEstimator<span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>SomRepresentationEstimator(nu=0.01, random_seed=42,
-                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc9411dcfb0&gt;,
+                               som_representation=&lt;minisom_representation.som_representation.SomRepresentation object at 0x7fc2a826da00&gt;,
                                verbose=True)</pre></div> </div></div></div></div>
     </div>
     <br />
@@ -1008,7 +1008,7 @@ Training the SOM representation estimator
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 2.511 seconds)
+   **Total running time of the script:** (0 minutes 2.584 seconds)
 
 
 .. _sphx_glr_download_auto_examples_demonstrate_01_train_som_representation_estimator.py:
